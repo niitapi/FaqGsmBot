@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QnABotCustom", "QnABotCustom\QnABotCustom.csproj", "{9A68DF07-307D-4658-9882-3D44B35888DE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bot", "Bot\QnABotCustom.csproj", "{9A68DF07-307D-4658-9882-3D44B35888DE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Bot.Builder.CognitiveServices.QnAMaker", "Library\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.csproj", "{CBFE0D35-D6C2-4B25-A498-CFC474A2C3A5}"
 EndProject
