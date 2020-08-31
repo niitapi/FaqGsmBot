@@ -314,7 +314,6 @@ E:\bot\Library\bin\Debug\fr\Microsoft.Bot.Builder.resources.dll
 E:\bot\Library\bin\Debug\ja\Microsoft.Bot.Builder.resources.dll
 E:\bot\Library\bin\Debug\ru\Microsoft.Bot.Builder.resources.dll
 E:\bot\Library\bin\Debug\zh-hans\Microsoft.Bot.Builder.resources.dll
-E:\bot\Library\obj\Debug\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.csprojResolveAssemblyReference.cache
 E:\bot\Library\obj\Debug\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.Resource.Resource.resources
 E:\bot\Library\obj\Debug\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.Resource.Resource.ar.resources
 E:\bot\Library\obj\Debug\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.Resource.Resource.cs.resources
@@ -337,3 +336,4 @@ E:\bot\Library\obj\Debug\ja\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.res
 E:\bot\Library\obj\Debug\zh-hans\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll
 E:\bot\Library\obj\Debug\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.dll
 E:\bot\Library\obj\Debug\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.pdb
+E:\bot\Library\obj\Debug\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.csprojResolveAssemblyReference.cache
