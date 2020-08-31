@@ -139,3 +139,22 @@ E:\Training.com\FAQBot\QnABotCustom\bin\fa\Microsoft.Bot.Builder.CognitiveServic
 E:\Training.com\FAQBot\QnABotCustom\bin\fr\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll
 E:\Training.com\FAQBot\QnABotCustom\bin\ja\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll
 E:\Training.com\FAQBot\QnABotCustom\bin\zh-hans\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll
+E:\bot\Bot\bin\ApplicationInsights.config
+E:\bot\Bot\bin\Bot Application.dll.config
+E:\bot\Bot\bin\Bot Application.dll
+E:\bot\Bot\bin\Bot Application.pdb
+E:\bot\Bot\bin\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.dll
+E:\bot\Bot\bin\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.pdb
+E:\bot\Bot\bin\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.xml
+E:\bot\Bot\bin\ar\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll
+E:\bot\Bot\bin\cs\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll
+E:\bot\Bot\bin\de-dE\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll
+E:\bot\Bot\bin\en\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll
+E:\bot\Bot\bin\es\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll
+E:\bot\Bot\bin\fa\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll
+E:\bot\Bot\bin\fr\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll
+E:\bot\Bot\bin\ja\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll
+E:\bot\Bot\bin\zh-hans\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll
+E:\bot\Bot\obj\Debug\QnABotCustom.csprojResolveAssemblyReference.cache
+E:\bot\Bot\obj\Debug\Bot Application.dll
+E:\bot\Bot\obj\Debug\Bot Application.pdb
