@@ -230,3 +230,45 @@ E:\Training.com\FAQBot\QnABotCustom\bin\zh-Hant\System.Spatial.resources.dll
 E:\Training.com\FAQBot\QnABotCustom\obj\Release\QnABotCustom.csprojResolveAssemblyReference.cache
 E:\Training.com\FAQBot\QnABotCustom\obj\Release\Bot Application.dll
 E:\Training.com\FAQBot\QnABotCustom\obj\Release\Bot Application.pdb
+E:\bot\Bot\bin\ApplicationInsights.config
+E:\bot\Bot\bin\Bot Application.dll.config
+E:\bot\Bot\bin\Bot Application.dll
+E:\bot\Bot\bin\Bot Application.pdb
+E:\bot\Bot\bin\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.dll
+E:\bot\Bot\bin\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.pdb
+E:\bot\Bot\bin\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.xml
+E:\bot\Bot\bin\Autofac.xml
+E:\bot\Bot\bin\Microsoft.Bot.Builder.pdb
+E:\bot\Bot\bin\Microsoft.Bot.Builder.xml
+E:\bot\Bot\bin\Microsoft.Bot.Builder.Autofac.pdb
+E:\bot\Bot\bin\Microsoft.Bot.Builder.Autofac.xml
+E:\bot\Bot\bin\Microsoft.Bot.Connector.xml
+E:\bot\Bot\bin\Microsoft.IdentityModel.Protocol.Extensions.xml
+E:\bot\Bot\bin\Newtonsoft.Json.xml
+E:\bot\Bot\bin\System.IdentityModel.Tokens.Jwt.xml
+E:\bot\Bot\bin\ar\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll
+E:\bot\Bot\bin\cs\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll
+E:\bot\Bot\bin\de-dE\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll
+E:\bot\Bot\bin\en\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll
+E:\bot\Bot\bin\es\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll
+E:\bot\Bot\bin\fa\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll
+E:\bot\Bot\bin\fr\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll
+E:\bot\Bot\bin\ja\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll
+E:\bot\Bot\bin\zh-hans\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll
+E:\bot\Bot\bin\ar\Microsoft.Bot.Builder.resources.dll
+E:\bot\Bot\bin\cs\Microsoft.Bot.Builder.resources.dll
+E:\bot\Bot\bin\de-dE\Microsoft.Bot.Builder.resources.dll
+E:\bot\Bot\bin\el\Microsoft.Bot.Builder.resources.dll
+E:\bot\Bot\bin\en\Microsoft.Bot.Builder.resources.dll
+E:\bot\Bot\bin\es\Microsoft.Bot.Builder.resources.dll
+E:\bot\Bot\bin\fa\Microsoft.Bot.Builder.resources.dll
+E:\bot\Bot\bin\fr\Microsoft.Bot.Builder.resources.dll
+E:\bot\Bot\bin\it\Microsoft.Bot.Builder.resources.dll
+E:\bot\Bot\bin\ja\Microsoft.Bot.Builder.resources.dll
+E:\bot\Bot\bin\nl\Microsoft.Bot.Builder.resources.dll
+E:\bot\Bot\bin\pt-BR\Microsoft.Bot.Builder.resources.dll
+E:\bot\Bot\bin\ru\Microsoft.Bot.Builder.resources.dll
+E:\bot\Bot\bin\zh-hans\Microsoft.Bot.Builder.resources.dll
+E:\bot\Bot\obj\Release\QnABotCustom.csprojResolveAssemblyReference.cache
+E:\bot\Bot\obj\Release\Bot Application.dll
+E:\bot\Bot\obj\Release\Bot Application.pdb

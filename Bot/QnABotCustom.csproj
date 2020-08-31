@@ -230,160 +230,108 @@
     <Content Include="bin\Bot Application.dll" />
     <Content Include="bin\Bot Application.pdb" />
     <Content Include="bin\Chronic.dll" />
-    <Content Include="bin\Cosmos.CRTCompat.dll" />
+    
     <Content Include="bin\cs\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll" />
     <Content Include="bin\cs\Microsoft.Bot.Builder.resources.dll" />
     <Content Include="bin\de-dE\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll" />
     <Content Include="bin\de-dE\Microsoft.Bot.Builder.resources.dll" />
-    <Content Include="bin\de\Microsoft.Data.Edm.resources.dll" />
-    <Content Include="bin\de\Microsoft.Data.OData.resources.dll" />
-    <Content Include="bin\de\Microsoft.Data.Services.Client.resources.dll" />
-    <Content Include="bin\de\System.Spatial.resources.dll" />
+  
     <Content Include="bin\el\Microsoft.Bot.Builder.resources.dll" />
     <Content Include="bin\EntityFramework.dll" />
     <Content Include="bin\EntityFramework.SqlServer.dll" />
-    <Content Include="bin\EntityFramework.SqlServer.xml" />
-    <Content Include="bin\EntityFramework.xml" />
+   
     <Content Include="bin\en\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll" />
     <Content Include="bin\en\Microsoft.Bot.Builder.resources.dll" />
     <Content Include="bin\es\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll" />
     <Content Include="bin\es\Microsoft.Bot.Builder.resources.dll" />
-    <Content Include="bin\es\Microsoft.Data.Edm.resources.dll" />
-    <Content Include="bin\es\Microsoft.Data.OData.resources.dll" />
-    <Content Include="bin\es\Microsoft.Data.Services.Client.resources.dll" />
-    <Content Include="bin\es\System.Spatial.resources.dll" />
+
     <Content Include="bin\fa\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll" />
     <Content Include="bin\fa\Microsoft.Bot.Builder.resources.dll" />
     <Content Include="bin\fr\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll" />
     <Content Include="bin\fr\Microsoft.Bot.Builder.resources.dll" />
-    <Content Include="bin\fr\Microsoft.Data.Edm.resources.dll" />
-    <Content Include="bin\fr\Microsoft.Data.OData.resources.dll" />
-    <Content Include="bin\fr\Microsoft.Data.Services.Client.resources.dll" />
-    <Content Include="bin\fr\System.Spatial.resources.dll" />
+    
+  
     <Content Include="bin\it\Microsoft.Bot.Builder.resources.dll" />
-    <Content Include="bin\it\Microsoft.Data.Edm.resources.dll" />
-    <Content Include="bin\it\Microsoft.Data.OData.resources.dll" />
-    <Content Include="bin\it\Microsoft.Data.Services.Client.resources.dll" />
-    <Content Include="bin\it\System.Spatial.resources.dll" />
+
+    
     <Content Include="bin\ja\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll" />
     <Content Include="bin\ja\Microsoft.Bot.Builder.resources.dll" />
-    <Content Include="bin\ja\Microsoft.Data.Edm.resources.dll" />
-    <Content Include="bin\ja\Microsoft.Data.OData.resources.dll" />
-    <Content Include="bin\ja\Microsoft.Data.Services.Client.resources.dll" />
-    <Content Include="bin\ja\System.Spatial.resources.dll" />
-    <Content Include="bin\ko\Microsoft.Data.Edm.resources.dll" />
-    <Content Include="bin\ko\Microsoft.Data.OData.resources.dll" />
-    <Content Include="bin\ko\Microsoft.Data.Services.Client.resources.dll" />
-    <Content Include="bin\ko\System.Spatial.resources.dll" />
+
+
+
     <Content Include="bin\Microsoft.AI.Agent.Intercept.dll" />
     <Content Include="bin\Microsoft.AI.DependencyCollector.dll" />
-    <Content Include="bin\Microsoft.AI.DependencyCollector.xml" />
+   
     <Content Include="bin\Microsoft.AI.PerfCounterCollector.dll" />
     <Content Include="bin\Microsoft.AI.ServerTelemetryChannel.dll" />
-    <Content Include="bin\Microsoft.AI.ServerTelemetryChannel.xml" />
+
     <Content Include="bin\Microsoft.AI.Web.dll" />
-    <Content Include="bin\Microsoft.AI.Web.xml" />
+    
     <Content Include="bin\Microsoft.AI.WindowsServer.dll" />
-    <Content Include="bin\Microsoft.AI.WindowsServer.xml" />
+   
     <Content Include="bin\Microsoft.ApplicationInsights.dll" />
-    <Content Include="bin\Microsoft.ApplicationInsights.xml" />
+  
     <Content Include="bin\Microsoft.Azure.Documents.Client.dll" />
-    <Content Include="bin\Microsoft.Azure.Documents.Client.xml" />
-    <Content Include="bin\Microsoft.Azure.Documents.ServiceInterop.dll" />
+    
     <Content Include="bin\Microsoft.Azure.KeyVault.Core.dll" />
-    <Content Include="bin\Microsoft.Azure.KeyVault.Core.xml" />
+   
     <Content Include="bin\Microsoft.Bot.Builder.Autofac.dll" />
-    <Content Include="bin\Microsoft.Bot.Builder.Autofac.pdb" />
-    <Content Include="bin\Microsoft.Bot.Builder.Autofac.xml" />
+  
+   
     <Content Include="bin\Microsoft.Bot.Builder.Azure.dll" />
-    <Content Include="bin\Microsoft.Bot.Builder.Azure.pdb" />
-    <Content Include="bin\Microsoft.Bot.Builder.Azure.xml" />
+    
     <Content Include="bin\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.dll" />
-    <Content Include="bin\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.pdb" />
-    <Content Include="bin\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.xml" />
+  
     <Content Include="bin\Microsoft.Bot.Builder.dll" />
     <Content Include="bin\Microsoft.Bot.Builder.History.dll" />
-    <Content Include="bin\Microsoft.Bot.Builder.History.pdb" />
-    <Content Include="bin\Microsoft.Bot.Builder.History.xml" />
-    <Content Include="bin\Microsoft.Bot.Builder.pdb" />
-    <Content Include="bin\Microsoft.Bot.Builder.xml" />
+   
     <Content Include="bin\Microsoft.Bot.Connector.dll" />
-    <Content Include="bin\Microsoft.Bot.Connector.xml" />
+  
     <Content Include="bin\Microsoft.Data.Edm.dll" />
-    <Content Include="bin\Microsoft.Data.Edm.xml" />
+
     <Content Include="bin\Microsoft.Data.OData.dll" />
-    <Content Include="bin\Microsoft.Data.OData.xml" />
+
     <Content Include="bin\Microsoft.Data.Services.Client.dll" />
-    <Content Include="bin\Microsoft.Data.Services.Client.xml" />
+ 
     <Content Include="bin\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
-    <Content Include="bin\Microsoft.IdentityModel.Clients.ActiveDirectory.xml" />
+
     <Content Include="bin\Microsoft.IdentityModel.Logging.dll" />
-    <Content Include="bin\Microsoft.IdentityModel.Logging.xml" />
+    
     <Content Include="bin\Microsoft.IdentityModel.Protocol.Extensions.dll" />
-    <Content Include="bin\Microsoft.IdentityModel.Protocol.Extensions.pdb" />
-    <Content Include="bin\Microsoft.IdentityModel.Protocol.Extensions.xml" />
+  
     <Content Include="bin\Microsoft.IdentityModel.Protocols.dll" />
     <Content Include="bin\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll" />
-    <Content Include="bin\Microsoft.IdentityModel.Protocols.OpenIdConnect.xml" />
-    <Content Include="bin\Microsoft.IdentityModel.Protocols.xml" />
+
     <Content Include="bin\Microsoft.IdentityModel.Tokens.dll" />
-    <Content Include="bin\Microsoft.IdentityModel.Tokens.xml" />
     <Content Include="bin\Microsoft.Rest.ClientRuntime.dll" />
     <Content Include="bin\Microsoft.WindowsAzure.Configuration.dll" />
-    <Content Include="bin\Microsoft.WindowsAzure.Configuration.xml" />
     <Content Include="bin\Microsoft.WindowsAzure.Storage.dll" />
-    <Content Include="bin\Microsoft.WindowsAzure.Storage.pdb" />
-    <Content Include="bin\Microsoft.WindowsAzure.Storage.xml" />
     <Content Include="bin\Newtonsoft.Json.dll" />
-    <Content Include="bin\Newtonsoft.Json.xml" />
     <Content Include="bin\nl\Microsoft.Bot.Builder.resources.dll" />
     <Content Include="bin\pt-BR\Microsoft.Bot.Builder.resources.dll" />
     <Content Include="bin\ru\Microsoft.Bot.Builder.resources.dll" />
-    <Content Include="bin\ru\Microsoft.Data.Edm.resources.dll" />
-    <Content Include="bin\ru\Microsoft.Data.OData.resources.dll" />
-    <Content Include="bin\ru\Microsoft.Data.Services.Client.resources.dll" />
-    <Content Include="bin\ru\System.Spatial.resources.dll" />
     <Content Include="bin\System.IdentityModel.Tokens.Jwt.dll" />
-    <Content Include="bin\System.IdentityModel.Tokens.Jwt.pdb" />
-    <Content Include="bin\System.IdentityModel.Tokens.Jwt.xml" />
     <Content Include="bin\System.Net.Http.dll" />
     <Content Include="bin\System.Net.Http.Formatting.dll" />
-    <Content Include="bin\System.Net.Http.Formatting.xml" />
     <Content Include="bin\System.Security.Cryptography.Algorithms.dll" />
     <Content Include="bin\System.Security.Cryptography.Encoding.dll" />
     <Content Include="bin\System.Security.Cryptography.Primitives.dll" />
     <Content Include="bin\System.Security.Cryptography.X509Certificates.dll" />
     <Content Include="bin\System.Spatial.dll" />
-    <Content Include="bin\System.Spatial.xml" />
     <Content Include="bin\System.Web.Http.dll" />
     <Content Include="bin\System.Web.Http.WebHost.dll" />
-    <Content Include="bin\System.Web.Http.WebHost.xml" />
-    <Content Include="bin\System.Web.Http.xml" />
     <Content Include="bin\zh-hans\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll" />
     <Content Include="bin\zh-hans\Microsoft.Bot.Builder.resources.dll" />
-    <Content Include="bin\zh-hans\Microsoft.Data.Edm.resources.dll" />
-    <Content Include="bin\zh-hans\Microsoft.Data.OData.resources.dll" />
-    <Content Include="bin\zh-hans\Microsoft.Data.Services.Client.resources.dll" />
-    <Content Include="bin\zh-hans\System.Spatial.resources.dll" />
-    <Content Include="bin\zh-Hant\Microsoft.Data.Edm.resources.dll" />
-    <Content Include="bin\zh-Hant\Microsoft.Data.OData.resources.dll" />
-    <Content Include="bin\zh-Hant\Microsoft.Data.Services.Client.resources.dll" />
-    <Content Include="bin\zh-Hant\System.Spatial.resources.dll" />
     <Content Include="default.htm" />
     <Content Include="Global.asax" />
     <Content Include="packages\Autofac.3.5.2\lib\net40\Autofac.dll" />
-    <Content Include="packages\Autofac.3.5.2\lib\net40\Autofac.xml" />
     <Content Include="packages\Autofac.3.5.2\lib\portable-net4+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1\Autofac.dll" />
-    <Content Include="packages\Autofac.3.5.2\lib\portable-net4+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1\Autofac.xml" />
     <Content Include="packages\Chronic.Signed.0.3.2\lib\net40\Chronic.dll" />
     <Content Include="packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll" />
-    <Content Include="packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.xml" />
     <Content Include="packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\portable-wp8+netcore45+net45+wp81+wpa81\System.Net.Http.Formatting.dll" />
-    <Content Include="packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\portable-wp8+netcore45+net45+wp81+wpa81\System.Net.Http.Formatting.xml" />
     <Content Include="packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll" />
     <Content Include="packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.xml" />
     <Content Include="packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll" />
-    <Content Include="packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.xml" />
     <Content Include="packages\Microsoft.Bot.Builder.3.5.5\lib\net46\ar\Microsoft.Bot.Builder.resources.dll" />
     <Content Include="packages\Microsoft.Bot.Builder.3.5.5\lib\net46\cs\Microsoft.Bot.Builder.resources.dll" />
     <Content Include="packages\Microsoft.Bot.Builder.3.5.5\lib\net46\de-dE\Microsoft.Bot.Builder.resources.dll" />
@@ -393,37 +341,23 @@
     <Content Include="packages\Microsoft.Bot.Builder.3.5.5\lib\net46\fr\Microsoft.Bot.Builder.resources.dll" />
     <Content Include="packages\Microsoft.Bot.Builder.3.5.5\lib\net46\ja\Microsoft.Bot.Builder.resources.dll" />
     <Content Include="packages\Microsoft.Bot.Builder.3.5.5\lib\net46\Microsoft.Bot.Builder.Autofac.dll" />
-    <Content Include="packages\Microsoft.Bot.Builder.3.5.5\lib\net46\Microsoft.Bot.Builder.Autofac.XML" />
     <Content Include="packages\Microsoft.Bot.Builder.3.5.5\lib\net46\Microsoft.Bot.Builder.dll" />
-    <Content Include="packages\Microsoft.Bot.Builder.3.5.5\lib\net46\Microsoft.Bot.Builder.XML" />
     <Content Include="packages\Microsoft.Bot.Builder.3.5.5\lib\net46\Microsoft.Bot.Connector.dll" />
-    <Content Include="packages\Microsoft.Bot.Builder.3.5.5\lib\net46\Microsoft.Bot.Connector.xml" />
     <Content Include="packages\Microsoft.Bot.Builder.3.5.5\lib\net46\ru\Microsoft.Bot.Builder.resources.dll" />
     <Content Include="packages\Microsoft.Bot.Builder.3.5.5\lib\net46\zh-hans\Microsoft.Bot.Builder.resources.dll" />
     <Content Include="packages\Microsoft.Bot.Builder.3.5.5\tools\RView.exe" />
     <Content Include="packages\Microsoft.IdentityModel.Protocol.Extensions.1.0.2.206221351\lib\net45\Microsoft.IdentityModel.Protocol.Extensions.dll" />
-    <Content Include="packages\Microsoft.IdentityModel.Protocol.Extensions.1.0.2.206221351\lib\net45\Microsoft.IdentityModel.Protocol.Extensions.pdb" />
-    <Content Include="packages\Microsoft.IdentityModel.Protocol.Extensions.1.0.2.206221351\lib\net45\Microsoft.IdentityModel.Protocol.Extensions.XML" />
     <Content Include="packages\Microsoft.Rest.ClientRuntime.2.3.2\lib\net45\Microsoft.Rest.ClientRuntime.dll" />
     <Content Include="packages\Microsoft.Rest.ClientRuntime.2.3.2\lib\netstandard1.1\Microsoft.Rest.ClientRuntime.dll" />
     <Content Include="packages\Microsoft.Rest.ClientRuntime.2.3.2\lib\netstandard1.5\Microsoft.Rest.ClientRuntime.dll" />
     <Content Include="packages\Microsoft.WindowsAzure.ConfigurationManager.3.1.0\lib\net40\Microsoft.WindowsAzure.Configuration.dll" />
-    <Content Include="packages\Microsoft.WindowsAzure.ConfigurationManager.3.1.0\lib\net40\Microsoft.WindowsAzure.Configuration.xml" />
     <Content Include="packages\Newtonsoft.Json.8.0.3\lib\net20\Newtonsoft.Json.dll" />
-    <Content Include="packages\Newtonsoft.Json.8.0.3\lib\net20\Newtonsoft.Json.xml" />
     <Content Include="packages\Newtonsoft.Json.8.0.3\lib\net35\Newtonsoft.Json.dll" />
-    <Content Include="packages\Newtonsoft.Json.8.0.3\lib\net35\Newtonsoft.Json.xml" />
     <Content Include="packages\Newtonsoft.Json.8.0.3\lib\net40\Newtonsoft.Json.dll" />
-    <Content Include="packages\Newtonsoft.Json.8.0.3\lib\net40\Newtonsoft.Json.xml" />
     <Content Include="packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll" />
-    <Content Include="packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.xml" />
     <Content Include="packages\Newtonsoft.Json.8.0.3\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll" />
-    <Content Include="packages\Newtonsoft.Json.8.0.3\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.xml" />
     <Content Include="packages\Newtonsoft.Json.8.0.3\lib\portable-net45+wp80+win8+wpa81+dnxcore50\Newtonsoft.Json.dll" />
-    <Content Include="packages\Newtonsoft.Json.8.0.3\lib\portable-net45+wp80+win8+wpa81+dnxcore50\Newtonsoft.Json.xml" />
     <Content Include="packages\System.IdentityModel.Tokens.Jwt.4.0.2.206221351\lib\net45\System.IdentityModel.Tokens.Jwt.dll" />
-    <Content Include="packages\System.IdentityModel.Tokens.Jwt.4.0.2.206221351\lib\net45\System.IdentityModel.Tokens.Jwt.pdb" />
-    <Content Include="packages\System.IdentityModel.Tokens.Jwt.4.0.2.206221351\lib\net45\System.IdentityModel.Tokens.Jwt.Xml" />
     <Content Include="scripts\ai.0.22.9-build00167.js" />
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Web.config">

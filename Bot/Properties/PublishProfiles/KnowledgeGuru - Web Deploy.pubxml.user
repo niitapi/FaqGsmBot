@@ -18,7 +18,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/21/2020 15:28:04</publishTime>
     </File>
     <File Include="bin/ar/Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll">
-      <publishTime>08/31/2020 16:35:46</publishTime>
+      <publishTime>08/31/2020 23:33:07</publishTime>
     </File>
     <File Include="bin/ar/Microsoft.Bot.Builder.resources.dll">
       <publishTime>03/19/2020 18:40:00</publishTime>
@@ -27,7 +27,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/21/2020 15:28:02</publishTime>
     </File>
     <File Include="bin/Bot Application.dll">
-      <publishTime>08/31/2020 16:36:49</publishTime>
+      <publishTime>08/31/2020 23:50:28</publishTime>
     </File>
     <File Include="bin/Bot Application.dll.config">
       <publishTime>08/31/2020 14:47:49</publishTime>
@@ -39,13 +39,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/19/2019 18:11:42</publishTime>
     </File>
     <File Include="bin/cs/Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll">
-      <publishTime>08/31/2020 16:35:47</publishTime>
+      <publishTime>08/31/2020 23:33:07</publishTime>
     </File>
     <File Include="bin/cs/Microsoft.Bot.Builder.resources.dll">
       <publishTime>03/19/2020 18:40:00</publishTime>
     </File>
     <File Include="bin/de-dE/Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll">
-      <publishTime>08/31/2020 16:35:47</publishTime>
+      <publishTime>08/31/2020 23:33:07</publishTime>
     </File>
     <File Include="bin/de-dE/Microsoft.Bot.Builder.resources.dll">
       <publishTime>03/19/2020 18:39:58</publishTime>
@@ -66,7 +66,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/19/2020 18:40:00</publishTime>
     </File>
     <File Include="bin/en/Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll">
-      <publishTime>08/31/2020 16:35:47</publishTime>
+      <publishTime>08/31/2020 23:33:07</publishTime>
     </File>
     <File Include="bin/en/Microsoft.Bot.Builder.resources.dll">
       <publishTime>03/19/2020 18:39:58</publishTime>
@@ -78,7 +78,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/02/2015 09:32:26</publishTime>
     </File>
     <File Include="bin/es/Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll">
-      <publishTime>08/31/2020 16:35:47</publishTime>
+      <publishTime>08/31/2020 23:33:08</publishTime>
     </File>
     <File Include="bin/es/Microsoft.Bot.Builder.resources.dll">
       <publishTime>03/19/2020 18:39:58</publishTime>
@@ -96,13 +96,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/20/2015 16:35:32</publishTime>
     </File>
     <File Include="bin/fa/Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll">
-      <publishTime>08/31/2020 16:35:47</publishTime>
+      <publishTime>08/31/2020 23:33:08</publishTime>
     </File>
     <File Include="bin/fa/Microsoft.Bot.Builder.resources.dll">
       <publishTime>03/19/2020 18:39:58</publishTime>
     </File>
     <File Include="bin/fr/Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll">
-      <publishTime>08/31/2020 16:35:48</publishTime>
+      <publishTime>08/31/2020 23:33:08</publishTime>
     </File>
     <File Include="bin/fr/Microsoft.Bot.Builder.resources.dll">
       <publishTime>03/19/2020 18:40:00</publishTime>
@@ -135,7 +135,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/20/2015 16:35:32</publishTime>
     </File>
     <File Include="bin/ja/Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll">
-      <publishTime>08/31/2020 16:35:48</publishTime>
+      <publishTime>08/31/2020 23:33:08</publishTime>
     </File>
     <File Include="bin/ja/Microsoft.Bot.Builder.resources.dll">
       <publishTime>03/19/2020 18:39:58</publishTime>
@@ -201,7 +201,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/27/2018 22:53:54</publishTime>
     </File>
     <File Include="bin/Microsoft.Bot.Builder.CognitiveServices.QnAMaker.dll">
-      <publishTime>08/31/2020 16:35:45</publishTime>
+      <publishTime>08/31/2020 23:33:07</publishTime>
     </File>
     <File Include="bin/Microsoft.Bot.Builder.CognitiveServices.QnAMaker.dll.config">
       <publishTime>08/21/2020 15:28:04</publishTime>
@@ -306,7 +306,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/21/2020 15:28:03</publishTime>
     </File>
     <File Include="bin/zh-hans/Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll">
-      <publishTime>08/31/2020 16:35:48</publishTime>
+      <publishTime>08/31/2020 23:33:08</publishTime>
     </File>
     <File Include="bin/zh-hans/Microsoft.Bot.Builder.resources.dll">
       <publishTime>03/19/2020 18:40:02</publishTime>
@@ -549,7 +549,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/21/2020 15:28:06</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>08/31/2020 16:35:57</publishTime>
+      <publishTime>08/31/2020 23:33:11</publishTime>
     </File>
   </ItemGroup>
 </Project>

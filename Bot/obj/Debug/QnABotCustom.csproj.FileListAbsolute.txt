@@ -158,12 +158,6 @@ E:\bot\Bot\bin\zh-hans\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resource
 E:\bot\Bot\obj\Debug\QnABotCustom.csprojResolveAssemblyReference.cache
 E:\bot\Bot\obj\Debug\Bot Application.dll
 E:\bot\Bot\obj\Debug\Bot Application.pdb
-E:\bot\Bot\bin\Microsoft.Bot.Builder.Autofac.dll
-E:\bot\Bot\bin\Microsoft.Bot.Builder.dll
-E:\bot\Bot\bin\Microsoft.Bot.Connector.dll
-E:\bot\Bot\bin\Microsoft.IdentityModel.Protocol.Extensions.dll
-E:\bot\Bot\bin\Newtonsoft.Json.dll
-E:\bot\Bot\bin\System.IdentityModel.Tokens.Jwt.dll
 E:\bot\Bot\bin\Microsoft.Bot.Builder.pdb
 E:\bot\Bot\bin\Microsoft.Bot.Builder.xml
 E:\bot\Bot\bin\Microsoft.Bot.Builder.Autofac.pdb
@@ -186,3 +180,4 @@ E:\bot\Bot\bin\nl\Microsoft.Bot.Builder.resources.dll
 E:\bot\Bot\bin\pt-BR\Microsoft.Bot.Builder.resources.dll
 E:\bot\Bot\bin\ru\Microsoft.Bot.Builder.resources.dll
 E:\bot\Bot\bin\zh-hans\Microsoft.Bot.Builder.resources.dll
+E:\bot\Bot\bin\Autofac.xml
