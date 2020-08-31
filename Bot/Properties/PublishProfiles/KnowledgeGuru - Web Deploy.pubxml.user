@@ -1,0 +1,555 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAzjgDIPeHvEyl5q5dQT3OFgAAAAACAAAAAAADZgAAwAAAABAAAAB4K/FmSycmzouIxd8ljWJwAAAAAASAAACgAAAAEAAAAAGiuZmy9Sc4Yjn0lratJo2AAAAAG6usQymF3RQM9gIeTSL8Or973VPDfSpElVTUskXWjsvffcz7Ph2CSkYfq8/gVSkXmPfaIH7YBLxvE5gsCFV5Sq2lYIUAWwGOWg3wzMsA+r+uS5UwbPgP9hepFCmz+utCGwlPwiSaAtxhG3UVIqwXu7ieJ2cuZwqfudyatJ4atBYUAAAAbls+74fKLYu2hCfvEys9RaHNn7w=</EncryptedPassword>
+    <_NewBackgroundProfile>False</_NewBackgroundProfile>
+    <_PublishTargetUrl>C:\Users\rohit.rawat\Desktop\sdfdssdfsdf</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="ApplicationInsights.config">
+      <publishTime>08/21/2020 15:28:04</publishTime>
+    </File>
+    <File Include="bin/ApplicationInsights.config">
+      <publishTime>08/21/2020 15:28:04</publishTime>
+    </File>
+    <File Include="bin/ar/Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll">
+      <publishTime>08/31/2020 16:35:46</publishTime>
+    </File>
+    <File Include="bin/ar/Microsoft.Bot.Builder.resources.dll">
+      <publishTime>03/19/2020 18:40:00</publishTime>
+    </File>
+    <File Include="bin/Autofac.dll">
+      <publishTime>08/21/2020 15:28:02</publishTime>
+    </File>
+    <File Include="bin/Bot Application.dll">
+      <publishTime>08/31/2020 16:36:49</publishTime>
+    </File>
+    <File Include="bin/Bot Application.dll.config">
+      <publishTime>08/31/2020 14:47:49</publishTime>
+    </File>
+    <File Include="bin/Chronic.dll">
+      <publishTime>08/21/2020 15:28:02</publishTime>
+    </File>
+    <File Include="bin/Cosmos.CRTCompat.dll">
+      <publishTime>06/19/2019 18:11:42</publishTime>
+    </File>
+    <File Include="bin/cs/Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll">
+      <publishTime>08/31/2020 16:35:47</publishTime>
+    </File>
+    <File Include="bin/cs/Microsoft.Bot.Builder.resources.dll">
+      <publishTime>03/19/2020 18:40:00</publishTime>
+    </File>
+    <File Include="bin/de-dE/Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll">
+      <publishTime>08/31/2020 16:35:47</publishTime>
+    </File>
+    <File Include="bin/de-dE/Microsoft.Bot.Builder.resources.dll">
+      <publishTime>03/19/2020 18:39:58</publishTime>
+    </File>
+    <File Include="bin/de/Microsoft.Data.Edm.resources.dll">
+      <publishTime>11/20/2015 16:32:22</publishTime>
+    </File>
+    <File Include="bin/de/Microsoft.Data.OData.resources.dll">
+      <publishTime>11/20/2015 16:33:04</publishTime>
+    </File>
+    <File Include="bin/de/Microsoft.Data.Services.Client.resources.dll">
+      <publishTime>11/20/2015 16:34:34</publishTime>
+    </File>
+    <File Include="bin/de/System.Spatial.resources.dll">
+      <publishTime>11/20/2015 16:35:32</publishTime>
+    </File>
+    <File Include="bin/el/Microsoft.Bot.Builder.resources.dll">
+      <publishTime>03/19/2020 18:40:00</publishTime>
+    </File>
+    <File Include="bin/en/Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll">
+      <publishTime>08/31/2020 16:35:47</publishTime>
+    </File>
+    <File Include="bin/en/Microsoft.Bot.Builder.resources.dll">
+      <publishTime>03/19/2020 18:39:58</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>03/02/2015 09:32:26</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>03/02/2015 09:32:26</publishTime>
+    </File>
+    <File Include="bin/es/Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll">
+      <publishTime>08/31/2020 16:35:47</publishTime>
+    </File>
+    <File Include="bin/es/Microsoft.Bot.Builder.resources.dll">
+      <publishTime>03/19/2020 18:39:58</publishTime>
+    </File>
+    <File Include="bin/es/Microsoft.Data.Edm.resources.dll">
+      <publishTime>11/20/2015 16:32:22</publishTime>
+    </File>
+    <File Include="bin/es/Microsoft.Data.OData.resources.dll">
+      <publishTime>11/20/2015 16:33:04</publishTime>
+    </File>
+    <File Include="bin/es/Microsoft.Data.Services.Client.resources.dll">
+      <publishTime>11/20/2015 16:34:34</publishTime>
+    </File>
+    <File Include="bin/es/System.Spatial.resources.dll">
+      <publishTime>11/20/2015 16:35:32</publishTime>
+    </File>
+    <File Include="bin/fa/Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll">
+      <publishTime>08/31/2020 16:35:47</publishTime>
+    </File>
+    <File Include="bin/fa/Microsoft.Bot.Builder.resources.dll">
+      <publishTime>03/19/2020 18:39:58</publishTime>
+    </File>
+    <File Include="bin/fr/Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll">
+      <publishTime>08/31/2020 16:35:48</publishTime>
+    </File>
+    <File Include="bin/fr/Microsoft.Bot.Builder.resources.dll">
+      <publishTime>03/19/2020 18:40:00</publishTime>
+    </File>
+    <File Include="bin/fr/Microsoft.Data.Edm.resources.dll">
+      <publishTime>11/20/2015 16:32:22</publishTime>
+    </File>
+    <File Include="bin/fr/Microsoft.Data.OData.resources.dll">
+      <publishTime>11/20/2015 16:33:04</publishTime>
+    </File>
+    <File Include="bin/fr/Microsoft.Data.Services.Client.resources.dll">
+      <publishTime>11/20/2015 16:34:34</publishTime>
+    </File>
+    <File Include="bin/fr/System.Spatial.resources.dll">
+      <publishTime>11/20/2015 16:35:32</publishTime>
+    </File>
+    <File Include="bin/it/Microsoft.Bot.Builder.resources.dll">
+      <publishTime>03/19/2020 18:40:00</publishTime>
+    </File>
+    <File Include="bin/it/Microsoft.Data.Edm.resources.dll">
+      <publishTime>11/20/2015 16:32:22</publishTime>
+    </File>
+    <File Include="bin/it/Microsoft.Data.OData.resources.dll">
+      <publishTime>11/20/2015 16:33:04</publishTime>
+    </File>
+    <File Include="bin/it/Microsoft.Data.Services.Client.resources.dll">
+      <publishTime>11/20/2015 16:34:34</publishTime>
+    </File>
+    <File Include="bin/it/System.Spatial.resources.dll">
+      <publishTime>11/20/2015 16:35:32</publishTime>
+    </File>
+    <File Include="bin/ja/Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll">
+      <publishTime>08/31/2020 16:35:48</publishTime>
+    </File>
+    <File Include="bin/ja/Microsoft.Bot.Builder.resources.dll">
+      <publishTime>03/19/2020 18:39:58</publishTime>
+    </File>
+    <File Include="bin/ja/Microsoft.Data.Edm.resources.dll">
+      <publishTime>11/20/2015 16:32:22</publishTime>
+    </File>
+    <File Include="bin/ja/Microsoft.Data.OData.resources.dll">
+      <publishTime>11/20/2015 16:33:04</publishTime>
+    </File>
+    <File Include="bin/ja/Microsoft.Data.Services.Client.resources.dll">
+      <publishTime>11/20/2015 16:34:34</publishTime>
+    </File>
+    <File Include="bin/ja/System.Spatial.resources.dll">
+      <publishTime>11/20/2015 16:35:32</publishTime>
+    </File>
+    <File Include="bin/ko/Microsoft.Data.Edm.resources.dll">
+      <publishTime>11/20/2015 16:32:22</publishTime>
+    </File>
+    <File Include="bin/ko/Microsoft.Data.OData.resources.dll">
+      <publishTime>11/20/2015 16:33:04</publishTime>
+    </File>
+    <File Include="bin/ko/Microsoft.Data.Services.Client.resources.dll">
+      <publishTime>11/20/2015 16:34:34</publishTime>
+    </File>
+    <File Include="bin/ko/System.Spatial.resources.dll">
+      <publishTime>11/20/2015 16:35:32</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.Agent.Intercept.dll">
+      <publishTime>08/21/2020 15:28:02</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.DependencyCollector.dll">
+      <publishTime>08/21/2020 15:28:02</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.PerfCounterCollector.dll">
+      <publishTime>08/21/2020 15:28:02</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.ServerTelemetryChannel.dll">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.Web.dll">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.WindowsServer.dll">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="bin/Microsoft.ApplicationInsights.dll">
+      <publishTime>08/21/2020 15:28:02</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Azure.Documents.Client.dll">
+      <publishTime>06/19/2019 18:11:40</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Azure.Documents.ServiceInterop.dll">
+      <publishTime>06/19/2019 18:11:40</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Azure.KeyVault.Core.dll">
+      <publishTime>07/29/2015 12:56:38</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Bot.Builder.Autofac.dll">
+      <publishTime>03/19/2020 18:40:02</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Bot.Builder.Azure.dll">
+      <publishTime>09/27/2018 22:53:54</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Bot.Builder.CognitiveServices.QnAMaker.dll">
+      <publishTime>08/31/2020 16:35:45</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Bot.Builder.CognitiveServices.QnAMaker.dll.config">
+      <publishTime>08/21/2020 15:28:04</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Bot.Builder.dll">
+      <publishTime>03/19/2020 18:40:00</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Bot.Builder.History.dll">
+      <publishTime>09/05/2018 20:21:04</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Bot.Connector.dll">
+      <publishTime>03/19/2020 18:40:02</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Data.Edm.dll">
+      <publishTime>11/20/2015 16:32:22</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Data.OData.dll">
+      <publishTime>11/20/2015 16:33:04</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Data.Services.Client.dll">
+      <publishTime>11/20/2015 16:34:34</publishTime>
+    </File>
+    <File Include="bin/Microsoft.IdentityModel.Clients.ActiveDirectory.dll">
+      <publishTime>11/08/2018 02:15:36</publishTime>
+    </File>
+    <File Include="bin/Microsoft.IdentityModel.Logging.dll">
+      <publishTime>06/11/2017 20:59:08</publishTime>
+    </File>
+    <File Include="bin/Microsoft.IdentityModel.Protocol.Extensions.dll">
+      <publishTime>03/06/2017 16:09:02</publishTime>
+    </File>
+    <File Include="bin/Microsoft.IdentityModel.Protocols.dll">
+      <publishTime>06/11/2017 20:59:42</publishTime>
+    </File>
+    <File Include="bin/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll">
+      <publishTime>06/11/2017 20:59:52</publishTime>
+    </File>
+    <File Include="bin/Microsoft.IdentityModel.Tokens.dll">
+      <publishTime>06/11/2017 20:59:18</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Rest.ClientRuntime.dll">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="bin/Microsoft.WindowsAzure.Configuration.dll">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="bin/Microsoft.WindowsAzure.Storage.dll">
+      <publishTime>09/19/2016 15:51:54</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>06/13/2016 23:06:14</publishTime>
+    </File>
+    <File Include="bin/nl/Microsoft.Bot.Builder.resources.dll">
+      <publishTime>03/19/2020 18:39:58</publishTime>
+    </File>
+    <File Include="bin/pt-BR/Microsoft.Bot.Builder.resources.dll">
+      <publishTime>03/19/2020 18:40:00</publishTime>
+    </File>
+    <File Include="bin/ru/Microsoft.Bot.Builder.resources.dll">
+      <publishTime>03/19/2020 18:39:58</publishTime>
+    </File>
+    <File Include="bin/ru/Microsoft.Data.Edm.resources.dll">
+      <publishTime>11/20/2015 16:32:22</publishTime>
+    </File>
+    <File Include="bin/ru/Microsoft.Data.OData.resources.dll">
+      <publishTime>11/20/2015 16:33:04</publishTime>
+    </File>
+    <File Include="bin/ru/Microsoft.Data.Services.Client.resources.dll">
+      <publishTime>11/20/2015 16:34:34</publishTime>
+    </File>
+    <File Include="bin/ru/System.Spatial.resources.dll">
+      <publishTime>11/20/2015 16:35:32</publishTime>
+    </File>
+    <File Include="bin/System.IdentityModel.Tokens.Jwt.dll">
+      <publishTime>06/11/2017 20:59:28</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.dll">
+      <publishTime>09/07/2018 10:59:08</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="bin/System.Security.Cryptography.Algorithms.dll">
+      <publishTime>11/05/2016 04:57:14</publishTime>
+    </File>
+    <File Include="bin/System.Security.Cryptography.Encoding.dll">
+      <publishTime>11/05/2016 04:57:08</publishTime>
+    </File>
+    <File Include="bin/System.Security.Cryptography.Primitives.dll">
+      <publishTime>11/05/2016 04:57:18</publishTime>
+    </File>
+    <File Include="bin/System.Security.Cryptography.X509Certificates.dll">
+      <publishTime>11/05/2016 04:57:18</publishTime>
+    </File>
+    <File Include="bin/System.Spatial.dll">
+      <publishTime>11/20/2015 16:35:32</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="bin/zh-hans/Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll">
+      <publishTime>08/31/2020 16:35:48</publishTime>
+    </File>
+    <File Include="bin/zh-hans/Microsoft.Bot.Builder.resources.dll">
+      <publishTime>03/19/2020 18:40:02</publishTime>
+    </File>
+    <File Include="bin/zh-hans/Microsoft.Data.Edm.resources.dll">
+      <publishTime>11/20/2015 16:32:22</publishTime>
+    </File>
+    <File Include="bin/zh-hans/Microsoft.Data.OData.resources.dll">
+      <publishTime>11/20/2015 16:33:04</publishTime>
+    </File>
+    <File Include="bin/zh-hans/Microsoft.Data.Services.Client.resources.dll">
+      <publishTime>11/20/2015 16:34:34</publishTime>
+    </File>
+    <File Include="bin/zh-hans/System.Spatial.resources.dll">
+      <publishTime>11/20/2015 16:35:32</publishTime>
+    </File>
+    <File Include="bin/zh-Hant/Microsoft.Data.Edm.resources.dll">
+      <publishTime>11/20/2015 16:32:22</publishTime>
+    </File>
+    <File Include="bin/zh-Hant/Microsoft.Data.OData.resources.dll">
+      <publishTime>11/20/2015 16:33:04</publishTime>
+    </File>
+    <File Include="bin/zh-Hant/Microsoft.Data.Services.Client.resources.dll">
+      <publishTime>11/20/2015 16:34:34</publishTime>
+    </File>
+    <File Include="bin/zh-Hant/System.Spatial.resources.dll">
+      <publishTime>11/20/2015 16:35:32</publishTime>
+    </File>
+    <File Include="default.htm">
+      <publishTime>08/21/2020 15:28:04</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>08/21/2020 15:28:04</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>08/31/2020 14:47:48</publishTime>
+    </File>
+    <File Include="packages/Autofac.3.5.2/Autofac.3.5.2.nupkg">
+      <publishTime>08/21/2020 15:28:02</publishTime>
+    </File>
+    <File Include="packages/Autofac.3.5.2/lib/net40/Autofac.dll">
+      <publishTime>08/21/2020 15:28:02</publishTime>
+    </File>
+    <File Include="packages/Autofac.3.5.2/lib/net40/Autofac.xml">
+      <publishTime>08/21/2020 15:28:02</publishTime>
+    </File>
+    <File Include="packages/Autofac.3.5.2/lib/portable-net4+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/Autofac.dll">
+      <publishTime>08/21/2020 15:28:02</publishTime>
+    </File>
+    <File Include="packages/Autofac.3.5.2/lib/portable-net4+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/Autofac.xml">
+      <publishTime>08/21/2020 15:28:02</publishTime>
+    </File>
+    <File Include="packages/Chronic.Signed.0.3.2/Chronic.Signed.0.3.2.nupkg">
+      <publishTime>08/21/2020 15:28:02</publishTime>
+    </File>
+    <File Include="packages/Chronic.Signed.0.3.2/lib/net40/Chronic.dll">
+      <publishTime>08/21/2020 15:28:02</publishTime>
+    </File>
+    <File Include="packages/Microsoft.AspNet.WebApi.5.2.3/Microsoft.AspNet.WebApi.5.2.3.nupkg">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Microsoft.AspNet.WebApi.Client.5.2.3/lib/net45/System.Net.Http.Formatting.dll">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Microsoft.AspNet.WebApi.Client.5.2.3/lib/net45/System.Net.Http.Formatting.xml">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Microsoft.AspNet.WebApi.Client.5.2.3/lib/portable-wp8+netcore45+net45+wp81+wpa81/System.Net.Http.Formatting.dll">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Microsoft.AspNet.WebApi.Client.5.2.3/lib/portable-wp8+netcore45+net45+wp81+wpa81/System.Net.Http.Formatting.xml">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Microsoft.AspNet.WebApi.Client.5.2.3/Microsoft.AspNet.WebApi.Client.5.2.3.nupkg">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Microsoft.AspNet.WebApi.Core.5.2.3/Content/web.config.transform">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Microsoft.AspNet.WebApi.Core.5.2.3/lib/net45/System.Web.Http.dll">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Microsoft.AspNet.WebApi.Core.5.2.3/lib/net45/System.Web.Http.xml">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Microsoft.AspNet.WebApi.Core.5.2.3/Microsoft.AspNet.WebApi.Core.5.2.3.nupkg">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Microsoft.AspNet.WebApi.WebHost.5.2.3/lib/net45/System.Web.Http.WebHost.dll">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Microsoft.AspNet.WebApi.WebHost.5.2.3/lib/net45/System.Web.Http.WebHost.xml">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Microsoft.AspNet.WebApi.WebHost.5.2.3/Microsoft.AspNet.WebApi.WebHost.5.2.3.nupkg">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Microsoft.Bot.Builder.3.5.5/lib/net46/ar/Microsoft.Bot.Builder.resources.dll">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Microsoft.Bot.Builder.3.5.5/lib/net46/cs/Microsoft.Bot.Builder.resources.dll">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Microsoft.Bot.Builder.3.5.5/lib/net46/de-dE/Microsoft.Bot.Builder.resources.dll">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Microsoft.Bot.Builder.3.5.5/lib/net46/en/Microsoft.Bot.Builder.resources.dll">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Microsoft.Bot.Builder.3.5.5/lib/net46/es/Microsoft.Bot.Builder.resources.dll">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Microsoft.Bot.Builder.3.5.5/lib/net46/fa/Microsoft.Bot.Builder.resources.dll">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Microsoft.Bot.Builder.3.5.5/lib/net46/fr/Microsoft.Bot.Builder.resources.dll">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Microsoft.Bot.Builder.3.5.5/lib/net46/ja/Microsoft.Bot.Builder.resources.dll">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Microsoft.Bot.Builder.3.5.5/lib/net46/Microsoft.Bot.Builder.Autofac.dll">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Microsoft.Bot.Builder.3.5.5/lib/net46/Microsoft.Bot.Builder.Autofac.XML">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Microsoft.Bot.Builder.3.5.5/lib/net46/Microsoft.Bot.Builder.dll">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Microsoft.Bot.Builder.3.5.5/lib/net46/Microsoft.Bot.Builder.XML">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Microsoft.Bot.Builder.3.5.5/lib/net46/Microsoft.Bot.Connector.dll">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Microsoft.Bot.Builder.3.5.5/lib/net46/Microsoft.Bot.Connector.xml">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Microsoft.Bot.Builder.3.5.5/lib/net46/ru/Microsoft.Bot.Builder.resources.dll">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Microsoft.Bot.Builder.3.5.5/lib/net46/zh-hans/Microsoft.Bot.Builder.resources.dll">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Microsoft.Bot.Builder.3.5.5/Microsoft.Bot.Builder.3.5.5.nupkg">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Microsoft.Bot.Builder.3.5.5/tools/RView.exe">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Microsoft.IdentityModel.Protocol.Extensions.1.0.2.206221351/lib/net45/Microsoft.IdentityModel.Protocol.Extensions.dll">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Microsoft.IdentityModel.Protocol.Extensions.1.0.2.206221351/lib/net45/Microsoft.IdentityModel.Protocol.Extensions.XML">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Microsoft.IdentityModel.Protocol.Extensions.1.0.2.206221351/Microsoft.IdentityModel.Protocol.Extensions.1.0.2.206221351.nupkg">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Microsoft.Rest.ClientRuntime.2.3.2/lib/net45/Microsoft.Rest.ClientRuntime.dll">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Microsoft.Rest.ClientRuntime.2.3.2/lib/netstandard1.1/Microsoft.Rest.ClientRuntime.dll">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Microsoft.Rest.ClientRuntime.2.3.2/lib/netstandard1.5/Microsoft.Rest.ClientRuntime.dll">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Microsoft.Rest.ClientRuntime.2.3.2/Microsoft.Rest.ClientRuntime.2.3.2.nupkg">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Microsoft.WindowsAzure.ConfigurationManager.3.1.0/lib/net40/Microsoft.WindowsAzure.Configuration.dll">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Microsoft.WindowsAzure.ConfigurationManager.3.1.0/lib/net40/Microsoft.WindowsAzure.Configuration.xml">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Microsoft.WindowsAzure.ConfigurationManager.3.1.0/Microsoft.WindowsAzure.ConfigurationManager.3.1.0.nupkg">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Newtonsoft.Json.8.0.3/lib/net20/Newtonsoft.Json.dll">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Newtonsoft.Json.8.0.3/lib/net20/Newtonsoft.Json.xml">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Newtonsoft.Json.8.0.3/lib/net35/Newtonsoft.Json.dll">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Newtonsoft.Json.8.0.3/lib/net35/Newtonsoft.Json.xml">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Newtonsoft.Json.8.0.3/lib/net40/Newtonsoft.Json.dll">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Newtonsoft.Json.8.0.3/lib/net40/Newtonsoft.Json.xml">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Newtonsoft.Json.8.0.3/lib/net45/Newtonsoft.Json.dll">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Newtonsoft.Json.8.0.3/lib/net45/Newtonsoft.Json.xml">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Newtonsoft.Json.8.0.3/lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.dll">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Newtonsoft.Json.8.0.3/lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.xml">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Newtonsoft.Json.8.0.3/lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Newtonsoft.Json.8.0.3/lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.xml">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Newtonsoft.Json.8.0.3/Newtonsoft.Json.8.0.3.nupkg">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/Newtonsoft.Json.8.0.3/tools/install.ps1">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/System.IdentityModel.Tokens.Jwt.4.0.2.206221351/lib/net45/System.IdentityModel.Tokens.Jwt.dll">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="packages/System.IdentityModel.Tokens.Jwt.4.0.2.206221351/lib/net45/System.IdentityModel.Tokens.Jwt.Xml">
+      <publishTime>08/21/2020 15:28:04</publishTime>
+    </File>
+    <File Include="packages/System.IdentityModel.Tokens.Jwt.4.0.2.206221351/System.IdentityModel.Tokens.Jwt.4.0.2.206221351.nupkg">
+      <publishTime>08/21/2020 15:28:03</publishTime>
+    </File>
+    <File Include="scripts/ai.0.22.9-build00167.js">
+      <publishTime>08/21/2020 15:28:06</publishTime>
+    </File>
+    <File Include="scripts/ai.0.22.9-build00167.min.js">
+      <publishTime>08/21/2020 15:28:06</publishTime>
+    </File>
+    <File Include="Service References/Application Insights/ConnectedService.json">
+      <publishTime>08/21/2020 15:28:06</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>08/31/2020 16:35:57</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

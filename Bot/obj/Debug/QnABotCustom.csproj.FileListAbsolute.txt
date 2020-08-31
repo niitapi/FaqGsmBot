@@ -1,0 +1,141 @@
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Bot Application.dll.config
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Bot Application.dll
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Bot Application.pdb
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Autofac.dll
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Chronic.dll
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Microsoft.Bot.Builder.Autofac.dll
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.dll
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Microsoft.Bot.Builder.dll
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Microsoft.Bot.Connector.dll
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Microsoft.IdentityModel.Protocol.Extensions.dll
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Microsoft.Rest.ClientRuntime.dll
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Microsoft.WindowsAzure.Configuration.dll
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Newtonsoft.Json.dll
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\System.IdentityModel.Tokens.Jwt.dll
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\System.Net.Http.Formatting.dll
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\System.Web.Http.dll
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\System.Web.Http.WebHost.dll
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Autofac.xml
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Microsoft.Bot.Builder.xml
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Microsoft.Bot.Builder.Autofac.xml
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.pdb
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.dll.config
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Microsoft.Bot.Connector.xml
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Microsoft.IdentityModel.Protocol.Extensions.pdb
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Microsoft.IdentityModel.Protocol.Extensions.xml
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Microsoft.WindowsAzure.Configuration.xml
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Newtonsoft.Json.xml
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\System.IdentityModel.Tokens.Jwt.pdb
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\System.IdentityModel.Tokens.Jwt.xml
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\System.Net.Http.Formatting.xml
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\System.Web.Http.xml
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\System.Web.Http.WebHost.xml
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\ar\Microsoft.Bot.Builder.resources.dll
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\cs\Microsoft.Bot.Builder.resources.dll
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\de-dE\Microsoft.Bot.Builder.resources.dll
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\en\Microsoft.Bot.Builder.resources.dll
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\es\Microsoft.Bot.Builder.resources.dll
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\fa\Microsoft.Bot.Builder.resources.dll
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\fr\Microsoft.Bot.Builder.resources.dll
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\ja\Microsoft.Bot.Builder.resources.dll
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\ru\Microsoft.Bot.Builder.resources.dll
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\zh-hans\Microsoft.Bot.Builder.resources.dll
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\ar\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\cs\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\de-dE\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\en\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\es\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\fa\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\fr\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\ja\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\zh-hans\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\obj\Debug\Bot Application.dll
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\obj\Debug\Bot Application.pdb
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.xml
+E:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\obj\Debug\QnABotCustom.csprojResolveAssemblyReference.cache
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Bot Application.dll.config
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Bot Application.dll
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Bot Application.pdb
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Autofac.dll
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Chronic.dll
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Microsoft.Bot.Builder.Autofac.dll
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.dll
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Microsoft.Bot.Builder.dll
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Microsoft.Bot.Connector.dll
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Microsoft.IdentityModel.Protocol.Extensions.dll
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Microsoft.Rest.ClientRuntime.dll
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Microsoft.WindowsAzure.Configuration.dll
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Newtonsoft.Json.dll
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\System.IdentityModel.Tokens.Jwt.dll
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\System.Net.Http.Formatting.dll
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\System.Web.Http.dll
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\System.Web.Http.WebHost.dll
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.pdb
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.xml
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Autofac.xml
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Microsoft.Bot.Builder.xml
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Microsoft.Bot.Builder.Autofac.xml
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Microsoft.Bot.Connector.xml
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Microsoft.IdentityModel.Protocol.Extensions.pdb
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Microsoft.IdentityModel.Protocol.Extensions.xml
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Microsoft.WindowsAzure.Configuration.xml
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Newtonsoft.Json.xml
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\System.IdentityModel.Tokens.Jwt.pdb
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\System.IdentityModel.Tokens.Jwt.xml
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\System.Net.Http.Formatting.xml
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\System.Web.Http.xml
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\System.Web.Http.WebHost.xml
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\ar\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\cs\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\de-dE\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\en\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\es\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\fa\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\fr\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\ja\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\zh-hans\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\ar\Microsoft.Bot.Builder.resources.dll
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\cs\Microsoft.Bot.Builder.resources.dll
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\de-dE\Microsoft.Bot.Builder.resources.dll
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\en\Microsoft.Bot.Builder.resources.dll
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\es\Microsoft.Bot.Builder.resources.dll
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\fa\Microsoft.Bot.Builder.resources.dll
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\fr\Microsoft.Bot.Builder.resources.dll
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\ja\Microsoft.Bot.Builder.resources.dll
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\ru\Microsoft.Bot.Builder.resources.dll
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\zh-hans\Microsoft.Bot.Builder.resources.dll
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\obj\Debug\QnABotCustom.csprojResolveAssemblyReference.cache
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\obj\Debug\Bot Application.dll
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\obj\Debug\Bot Application.pdb
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\ApplicationInsights.config
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Microsoft.AI.Agent.Intercept.dll
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Microsoft.AI.DependencyCollector.dll
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Microsoft.AI.PerfCounterCollector.dll
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Microsoft.AI.ServerTelemetryChannel.dll
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Microsoft.AI.Web.dll
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Microsoft.AI.WindowsServer.dll
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Microsoft.ApplicationInsights.dll
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Microsoft.AI.DependencyCollector.xml
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Microsoft.AI.ServerTelemetryChannel.xml
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Microsoft.AI.Web.xml
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Microsoft.AI.WindowsServer.xml
+F:\Projects\RND\BOT\2017\FAQBot\QnABotCustom\bin\Microsoft.ApplicationInsights.xml
+E:\Training.com\FAQBot\QnABotCustom\obj\Debug\QnABotCustom.csprojResolveAssemblyReference.cache
+E:\Training.com\FAQBot\QnABotCustom\obj\Debug\Bot Application.dll
+E:\Training.com\FAQBot\QnABotCustom\obj\Debug\Bot Application.pdb
+E:\Training.com\FAQBot\QnABotCustom\bin\ApplicationInsights.config
+E:\Training.com\FAQBot\QnABotCustom\bin\Bot Application.dll.config
+E:\Training.com\FAQBot\QnABotCustom\bin\Bot Application.dll
+E:\Training.com\FAQBot\QnABotCustom\bin\Bot Application.pdb
+E:\Training.com\FAQBot\QnABotCustom\bin\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.dll
+E:\Training.com\FAQBot\QnABotCustom\bin\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.pdb
+E:\Training.com\FAQBot\QnABotCustom\bin\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.xml
+E:\Training.com\FAQBot\QnABotCustom\bin\ar\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll
+E:\Training.com\FAQBot\QnABotCustom\bin\cs\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll
+E:\Training.com\FAQBot\QnABotCustom\bin\de-dE\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll
+E:\Training.com\FAQBot\QnABotCustom\bin\en\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll
+E:\Training.com\FAQBot\QnABotCustom\bin\es\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll
+E:\Training.com\FAQBot\QnABotCustom\bin\fa\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll
+E:\Training.com\FAQBot\QnABotCustom\bin\fr\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll
+E:\Training.com\FAQBot\QnABotCustom\bin\ja\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll
+E:\Training.com\FAQBot\QnABotCustom\bin\zh-hans\Microsoft.Bot.Builder.CognitiveServices.QnAMaker.resources.dll
