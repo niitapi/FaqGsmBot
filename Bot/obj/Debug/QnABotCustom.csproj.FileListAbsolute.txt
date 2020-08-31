@@ -181,3 +181,9 @@ E:\bot\Bot\bin\pt-BR\Microsoft.Bot.Builder.resources.dll
 E:\bot\Bot\bin\ru\Microsoft.Bot.Builder.resources.dll
 E:\bot\Bot\bin\zh-hans\Microsoft.Bot.Builder.resources.dll
 E:\bot\Bot\bin\Autofac.xml
+E:\bot\Bot\bin\Microsoft.Bot.Builder.Autofac.dll
+E:\bot\Bot\bin\Microsoft.Bot.Builder.dll
+E:\bot\Bot\bin\Microsoft.Bot.Connector.dll
+E:\bot\Bot\bin\Microsoft.IdentityModel.Protocol.Extensions.dll
+E:\bot\Bot\bin\Newtonsoft.Json.dll
+E:\bot\Bot\bin\System.IdentityModel.Tokens.Jwt.dll
