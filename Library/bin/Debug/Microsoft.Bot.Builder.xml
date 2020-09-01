@@ -85,6 +85,9 @@
             <summary>
             Volitile in-memory implementation of <see cref="T:Microsoft.Bot.Builder.Dialogs.Internals.IBotDataStore`1"/>
             </summary>
+            <remarks>
+            NOTE: This uses an internal dictionary with no culling so it should not be used for production code at all, as it will eventually just use all of your memory.
+            </remarks>
         </member>
         <member name="T:Microsoft.Bot.Builder.Dialogs.Internals.ConnectorStore">
             <summary>
@@ -111,7 +114,9 @@
         </member>
         <member name="T:Microsoft.Bot.Builder.Dialogs.Internals.CachingBotDataStore">
             <summary>
-            Caches data for <see cref="T:Microsoft.Bot.Builder.Dialogs.Internals.BotDataBase`1"/> and wraps the data in <see cref="T:Microsoft.Bot.Connector.BotData"/> to be stored in <see cref="F:Microsoft.Bot.Builder.Dialogs.Internals.CachingBotDataStore.inner"/>
+            Caches changes until FlushAsync() is called 
+            NOTE: Despite the name, this is NOT a cache of access of the inner store, but is a change cache of changes that will be pushed to 
+            inner store.
             </summary>
         </member>
         <member name="T:Microsoft.Bot.Builder.Dialogs.Internals.IBotToUser">
@@ -211,6 +216,26 @@
             Make the <see cref="T:Microsoft.Bot.Connector.IStateClient"/> implementation.
             </summary>
             <returns>The <see cref="T:Microsoft.Bot.Connector.IStateClient"/> implementation.</returns>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Dialogs.Internals.IConnectorClientFactory.MakeOAuthClient">
+            <summary>
+            Make the <see cref="T:Microsoft.Bot.Connector.IOAuthClient"/> implementation.
+            </summary>
+            <returns>The <see cref="T:Microsoft.Bot.Connector.IOAuthClient"/> implementation.</returns>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Dialogs.Internals.ConnectorClientFactory.GetSettingsStateApiUrl(System.String)">
+            <summary>
+            Get the state api endpoint from settings. 
+            </summary>
+            <param name="key">The key.</param>
+            <returns>The state api endpoint from settings.</returns>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Dialogs.Internals.ConnectorClientFactory.GetOAuthApiFromSettingsUrl(System.String)">
+            <summary>
+            Get the OAuth API endpoint from settings. 
+            </summary>
+            <param name="key">The key.</param>
+            <returns>The OAuth API endpoint from settings.</returns>
         </member>
         <member name="T:Microsoft.Bot.Builder.Dialogs.Internals.IDialogStack">
             <summary>
@@ -372,6 +397,197 @@
             <param name="handler"> Handler to call if no match. </param>
             <param name="resultHandler"> Optional result handler to be called if handler is creating a chaild dialog. </param>
             <returns> A CommandDialog. </returns>
+        </member>
+        <member name="T:Microsoft.Bot.Builder.Dialogs.GetTokenDialog">
+            <summary>
+            A Dialog to rerieve a user token for a configured OAuth connection
+            This Dialog will first attempt to rerieve the user token from the Azure Bot Service
+            If the Azure Bot Service does not already have a token, the GetTokenDialog will send
+            the user an OAuthCard.
+            The GetTokenDialog will then wait for either the user to come back, or for the user to send
+            a validation code. The Dialog will attempt to exchange whatever response is sent for the 
+            user token. If successful, the dialog will return the token and otherwise will retry the
+            specified number of times.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Bot.Builder.Dialogs.GetTokenResponse">
+            <summary>
+            Result object from the GetTokenDialog
+            If the GetToken action is successful in retrieving a user token, the GetTokenDialog will be populated with the Token property
+            If the GetToken action is unsuccessful in retrieving a user token, the GetTokenDialog will be populated with the NonTokenResponse property
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.GetTokenResponse.Token">
+            <summary>
+            The user token
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.GetTokenResponse.NonTokenResponse">
+            <summary>
+            The text that the user typed when the GetTokenDialog is unable to retrieve a user token
+            </summary>
+        </member>
+        <member name="T:Microsoft.Bot.Builder.Dialogs.EndConversationEvent">
+            <summary>
+            This event represents the end of the conversation.  It is initiated by <see cref="M:Microsoft.Bot.Builder.Dialogs.Extensions.EndConversation(Microsoft.Bot.Builder.Dialogs.IDialogContext,System.String)"/>
+            and propagates as an event in the stack scorable process to allow interception.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.EndConversationEvent.Code">
+            <summary>
+            Code selected from <see cref="T:Microsoft.Bot.Connector.EndOfConversationCodes"/> 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Dialogs.EndConversationEvent.#ctor(System.String)">
+            <summary>
+            Construct the <see cref="T:Microsoft.Bot.Builder.Dialogs.EndConversationEvent"/>.
+            </summary>
+            <param name="code">Code selected from <see cref="T:Microsoft.Bot.Connector.EndOfConversationCodes"/>.</param>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Dialogs.EndConversationEvent.MakeScorable">
+            <summary>
+            Construct the scorable used to handle the <see cref="T:Microsoft.Bot.Builder.Dialogs.EndConversationEvent"/>.
+            </summary>
+            <returns>The constructed scorable.</returns>
+        </member>
+        <member name="T:Microsoft.Bot.Builder.Dialogs.Extensions">
+            <summary>
+            Helper methods.
+            </summary>
+            <summary>
+            Helper methods.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Dialogs.Extensions.EndConversation(Microsoft.Bot.Builder.Dialogs.IDialogContext,System.String)">
+            <summary>
+            Initiate an <see cref="T:Microsoft.Bot.Builder.Dialogs.EndConversationEvent"/> to reset the conversation's state and stack and send an
+            <see cref="F:Microsoft.Bot.Connector.ActivityTypes.EndOfConversation"/> to the Connector.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Dialogs.Extensions.GZipSerialize(Microsoft.Bot.Builder.Dialogs.ResumptionCookie)">
+            <summary>
+            Binary serializes <see cref="T:Microsoft.Bot.Builder.Dialogs.ResumptionCookie"/> using <see cref="T:System.IO.Compression.GZipStream"/>.
+            </summary>
+            <param name="resumptionCookie"> The resumption cookie.</param>
+            <returns> A Base64 encoded string.</returns>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Dialogs.Extensions.RecognizeInteger(Microsoft.Bot.Builder.Dialogs.IPromptRecognizer,Microsoft.Bot.Connector.IMessageActivity)">
+            <summary>Recognizer for a Int64 number.</summary>
+            <param name="recognizer"><see cref="T:Microsoft.Bot.Builder.Dialogs.IPromptRecognizer"/></param>
+            <param name="message">Message context.</param>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Dialogs.Extensions.RecognizeDouble(Microsoft.Bot.Builder.Dialogs.IPromptRecognizer,Microsoft.Bot.Connector.IMessageActivity)">
+            <summary>Recognizer for a double number.</summary>
+            <param name="recognizer"><see cref="T:Microsoft.Bot.Builder.Dialogs.IPromptRecognizer"/></param>
+            <param name="message">Message context.</param>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Dialogs.Extensions.RecognizeIntegerInRange(Microsoft.Bot.Builder.Dialogs.IPromptRecognizer,Microsoft.Bot.Connector.IMessageActivity,System.Nullable{System.Int64},System.Nullable{System.Int64})">
+            <summary>Recognizer for a Int64 number within a range</summary>
+            <param name="recognizer"><see cref="T:Microsoft.Bot.Builder.Dialogs.IPromptRecognizer"/></param>
+            <param name="message">Message context.</param>
+            <param name="max">Maximum value.</param>
+            <param name="min">Minimun value.</param>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Dialogs.Extensions.RecognizeDoubleInRange(Microsoft.Bot.Builder.Dialogs.IPromptRecognizer,Microsoft.Bot.Connector.IMessageActivity,System.Nullable{System.Double},System.Nullable{System.Double})">
+            <summary>Recognizes the double in range.</summary>
+            <param name="recognizer"><see cref="T:Microsoft.Bot.Builder.Dialogs.IPromptRecognizer"/></param>
+            <param name="message">Message context.</param>
+            <param name="max">Maximum value.</param>
+            <param name="min">Minimun value.</param>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Dialogs.Extensions.GetValue``1(Microsoft.Bot.Builder.Dialogs.IBotDataBag,System.String)">
+            <summary>
+            Gets the value associated with the specified key.
+            </summary>
+            <typeparam name="T">The type of the value to get.</typeparam>
+            <param name="bag">The bot data bag.</param>
+            <param name="key">The key of the value to get or set.</param>
+            <returns>The value associated with the specified key. If the specified key is not found, a get operation throws a KeyNotFoundException.</returns>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException"><paramref name="key"/></exception>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Dialogs.Extensions.GetValueOrDefault``1(Microsoft.Bot.Builder.Dialogs.IBotDataBag,System.String,``0)">
+            <summary>
+            Gets the value associated with the specified key or a default value if not found.
+            </summary>
+            <typeparam name="T">The type of the value to get.</typeparam>
+            <param name="bag">The bot data bag.</param>
+            <param name="key">The key of the value to get or set.</param>
+            <param name="defaultValue">The value to return if the key is not present</param>
+            <returns>The value associated with the specified key. If the specified key is not found, <paramref name="defaultValue"/>
+            is returned </returns>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Dialogs.Extensions.PostAsync(Microsoft.Bot.Builder.Dialogs.Internals.IBotToUser,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Post a message to be sent to the user, using previous messages to establish a conversation context.
+            </summary>
+            <remarks>
+            If the locale parameter is not set, locale of the incoming message will be used for reply.
+            </remarks>
+            <param name="botToUser">Communication channel to use.</param>
+            <param name="text">The message text.</param>
+            <param name="locale">The locale of the text.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A task that represents the post operation.</returns>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Dialogs.Extensions.SayAsync(Microsoft.Bot.Builder.Dialogs.Internals.IBotToUser,System.String,System.String,Microsoft.Bot.Builder.Dialogs.MessageOptions,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Post a message and optional SSML to be sent to the user, using previous messages to establish a conversation context.
+            </summary>
+            <remarks>
+            If the locale parameter is not set, locale of the incoming message will be used for reply.
+            </remarks>
+            <param name="botToUser">Communication channel to use.</param>
+            <param name="text">The message text.</param>
+            <param name="speak">The SSML markup for text to speech.</param>
+            <param name="options">The options for the message.</param>
+            <param name="locale">The locale of the text.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A task that represents the post operation.</returns>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Dialogs.Extensions.Wait(Microsoft.Bot.Builder.Dialogs.Internals.IDialogStack,Microsoft.Bot.Builder.Dialogs.ResumeAfter{Microsoft.Bot.Connector.IMessageActivity})">
+            <summary>
+            Suspend the current dialog until the user has sent a message to the bot.
+            </summary>
+            <param name="stack">The dialog stack.</param>
+            <param name="resume">The method to resume when the message has been received.</param>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Dialogs.Extensions.Forward``1(Microsoft.Bot.Builder.Dialogs.Internals.IDialogStack,Microsoft.Bot.Builder.Dialogs.IDialog{``0},Microsoft.Bot.Builder.Dialogs.ResumeAfter{``0},Microsoft.Bot.Connector.IMessageActivity,System.Threading.CancellationToken)">
+            <summary>
+            Call a child dialog, add it to the top of the stack and post the message to the child dialog.
+            </summary>
+            <typeparam name="R">The type of result expected from the child dialog.</typeparam>
+            <param name="stack">The dialog stack.</param>
+            <param name="child">The child dialog.</param>
+            <param name="resume">The method to resume when the child dialog has completed.</param>
+            <param name="message">The message that will be posted to child dialog.</param>
+            <param name="token">A cancellation token.</param>
+            <returns>A task representing the Forward operation.</returns>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Dialogs.Extensions.AddHeroCard``1(Microsoft.Bot.Connector.IMessageActivity,System.String,System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Generates buttons from options and add them to the message.
+            </summary>
+            <remarks>
+            <typeparamref name="T"/> should implement ToString().
+            </remarks>
+            <typeparam name="T"> Type of the options.</typeparam>
+            <param name="message"> The message that the buttons will be added to.</param>
+            <param name="text"> The text in the <see cref="T:Microsoft.Bot.Connector.HeroCard"/>.</param>
+            <param name="options"> The options that cause generation of buttons.</param>
+            <param name="descriptions">Descriptions for each option.</param>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Dialogs.Extensions.AddKeyboardCard``1(Microsoft.Bot.Connector.IMessageActivity,System.String,System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Generates buttons from options and add them to the message.
+            </summary>
+            <remarks>
+            <typeparamref name="T"/> should implement ToString().
+            </remarks>
+            <typeparam name="T"> Type of the options.</typeparam>
+            <param name="message"> The message that the buttons will be added to.</param>
+            <param name="text"> The text in the <see cref="T:Microsoft.Bot.Connector.HeroCard"/>.</param>
+            <param name="options"> The options that cause generation of buttons.</param>
+            <param name="descriptions">Descriptions for each option.</param>
         </member>
         <member name="T:Microsoft.Bot.Builder.Dialogs.Chain">
             <summary>
@@ -901,87 +1117,114 @@
             <param name="str"> The Base64 encoded string.</param>
             <returns> An instance of <see cref="T:Microsoft.Bot.Builder.Dialogs.ResumptionCookie"/></returns>
         </member>
-        <member name="T:Microsoft.Bot.Builder.Dialogs.Extensions">
+        <member name="T:Microsoft.Bot.Builder.Dialogs.LuisTraceInfo">
             <summary>
-            Helper methods.
-            </summary>
-            <summary>
-            Helper methods.
+            The schema for the LUIS trace info
             </summary>
         </member>
-        <member name="M:Microsoft.Bot.Builder.Dialogs.Extensions.GZipSerialize(Microsoft.Bot.Builder.Dialogs.ResumptionCookie)">
+        <member name="P:Microsoft.Bot.Builder.Dialogs.LuisTraceInfo.LuisResult">
             <summary>
-            Binary serializes <see cref="T:Microsoft.Bot.Builder.Dialogs.ResumptionCookie"/> using <see cref="T:System.IO.Compression.GZipStream"/>.
+            The raw response coming back from the LUIS service
             </summary>
-            <param name="resumptionCookie"> The resumption cookie.</param>
-            <returns> A Base64 encoded string.</returns>
         </member>
-        <member name="M:Microsoft.Bot.Builder.Dialogs.Extensions.Get``1(Microsoft.Bot.Builder.Dialogs.IBotDataBag,System.String)">
+        <member name="P:Microsoft.Bot.Builder.Dialogs.LuisTraceInfo.LuisOptions">
             <summary>
-            Gets the value associated with the specified key.
+            The options passed to the LUIS service
             </summary>
-            <typeparam name="T">The type of the value to get.</typeparam>
-            <param name="bag">The bot data bag.</param>
-            <param name="key">The key of the value to get or set.</param>
-            <returns>The value associated with the specified key. If the specified key is not found, a get operation throws a KeyNotFoundException.</returns>
         </member>
-        <member name="M:Microsoft.Bot.Builder.Dialogs.Extensions.PostAsync(Microsoft.Bot.Builder.Dialogs.Internals.IBotToUser,System.String,System.String,System.Threading.CancellationToken)">
+        <member name="P:Microsoft.Bot.Builder.Dialogs.LuisTraceInfo.LuisModel">
             <summary>
-            Post a message to be sent to the bot, using previous messages to establish a conversation context.
+            The metadata about the LUIS app
             </summary>
-            <remarks>
-            If the locale parameter is not set, locale of the incoming message will be used for reply.
-            </remarks>
-            <param name="botToUser">Communication channel to use.</param>
-            <param name="text">The message text.</param>
-            <param name="locale">The locale of the text.</param>
-            <param name="cancellationToken">The cancellation token.</param>
-            <returns>A task that represents the post operation.</returns>
         </member>
-        <member name="M:Microsoft.Bot.Builder.Dialogs.Extensions.Wait(Microsoft.Bot.Builder.Dialogs.Internals.IDialogStack,Microsoft.Bot.Builder.Dialogs.ResumeAfter{Microsoft.Bot.Connector.IMessageActivity})">
+        <member name="P:Microsoft.Bot.Builder.Dialogs.IPromptRecognizeNumbersOptions.MinValue">
             <summary>
-            Suspend the current dialog until the user has sent a message to the bot.
+            (Optional) Minimum value allowed.
             </summary>
-            <param name="stack">The dialog stack.</param>
-            <param name="resume">The method to resume when the message has been received.</param>
         </member>
-        <member name="M:Microsoft.Bot.Builder.Dialogs.Extensions.Forward``1(Microsoft.Bot.Builder.Dialogs.Internals.IDialogStack,Microsoft.Bot.Builder.Dialogs.IDialog{``0},Microsoft.Bot.Builder.Dialogs.ResumeAfter{``0},Microsoft.Bot.Connector.IMessageActivity,System.Threading.CancellationToken)">
+        <member name="P:Microsoft.Bot.Builder.Dialogs.IPromptRecognizeNumbersOptions.MaxValue">
             <summary>
-            Call a child dialog, add it to the top of the stack and post the message to the child dialog.
+            (Optional) Maximum value allowed.
             </summary>
-            <typeparam name="R">The type of result expected from the child dialog.</typeparam>
-            <param name="stack">The dialog stack.</param>
-            <param name="child">The child dialog.</param>
-            <param name="resume">The method to resume when the child dialog has completed.</param>
-            <param name="message">The message that will be posted to child dialog.</param>
-            <param name="token">A cancellation token.</param>
-            <returns>A task representing the Forward operation.</returns>
         </member>
-        <member name="M:Microsoft.Bot.Builder.Dialogs.Extensions.AddHeroCard``1(Microsoft.Bot.Connector.IMessageActivity,System.String,System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{System.String})">
+        <member name="P:Microsoft.Bot.Builder.Dialogs.IPromptRecognizeNumbersOptions.IntegerOnly">
             <summary>
-            Generates buttons from options and add them to the message.
+            (Optional) If true, then only integers will be recognized.
             </summary>
-            <remarks>
-            <typeparamref name="T"/> should implement ToString().
-            </remarks>
-            <typeparam name="T"> Type of the options.</typeparam>
-            <param name="message"> The message that the buttons will be added to.</param>
-            <param name="text"> The text in the <see cref="T:Microsoft.Bot.Connector.HeroCard"/>.</param>
-            <param name="options"> The options that cause generation of buttons.</param>
-            <param name="descriptions">Descriptions for each option.</param>
         </member>
-        <member name="M:Microsoft.Bot.Builder.Dialogs.Extensions.AddKeyboardCard``1(Microsoft.Bot.Connector.IMessageActivity,System.String,System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{System.String})">
+        <member name="P:Microsoft.Bot.Builder.Dialogs.PromptRecognizeNumbersOptions.MinValue">
             <summary>
-            Generates buttons from options and add them to the message.
+            (Optional) Minimum value allowed.
             </summary>
-            <remarks>
-            <typeparamref name="T"/> should implement ToString().
-            </remarks>
-            <typeparam name="T"> Type of the options.</typeparam>
-            <param name="message"> The message that the buttons will be added to.</param>
-            <param name="text"> The text in the <see cref="T:Microsoft.Bot.Connector.HeroCard"/>.</param>
-            <param name="options"> The options that cause generation of buttons.</param>
-            <param name="descriptions">Descriptions for each option.</param>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.PromptRecognizeNumbersOptions.MaxValue">
+            <summary>
+            (Optional) Maximum value allowed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.PromptRecognizeNumbersOptions.IntegerOnly">
+            <summary>
+            (Optional) If true, then only integers will be recognized.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.PromptRecognizeChoicesOptions.ExcludeValue">
+            <summary>
+            (Optional) If true, the choices value will NOT be recognized over.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.PromptRecognizeChoicesOptions.ExcludeAction">
+            <summary>
+            (Optional) If true, the choices action will NOT be recognized over.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.PromptRecognizeChoicesOptions.AllowPartialMatches">
+            <summary>
+            (Optional) if true, then only some of the tokens in a value need to exist to be considered a match.The default value is "false".
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.PromptRecognizeChoicesOptions.MaxTokenDistance">
+            <summary>
+            (Optional) maximum tokens allowed between two matched tokens in the utterance.So with
+            a max distance of 2 the value "second last" would match the utternace "second from the last"
+            but it wouldn't match "Wait a second. That's not the last one is it?". 
+            The default value is "2".  
+            </summary>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Dialogs.IPromptRecognizer.RecognizeLocalizedRegExp(Microsoft.Bot.Connector.IMessageActivity,System.String,System.Resources.ResourceManager)">
+            <summary>Recognizer using a RegEx to match expressions.</summary>
+            <param name="message">Message context.</param>
+            <param name="expressionKey">Name of the resource with the RegEx.</param>
+            <param name="resourceManager">Resources with the localized expression.</param>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Dialogs.IPromptRecognizer.RecognizeChoices``1(Microsoft.Bot.Connector.IMessageActivity,System.Collections.Generic.IReadOnlyDictionary{``0,System.Collections.Generic.IReadOnlyList{``0}},Microsoft.Bot.Builder.Dialogs.IPromptRecognizeChoicesOptions)">
+            <summary>Recognizer for a number.</summary>
+            <param name="message">Message context.</param>
+            <param name="choicesDictionary">Dictionary with the options to choose from as a key and their synonyms as a value.</param>
+            <param name="options">Options of the Recognizer. <see cref="T:Microsoft.Bot.Builder.Dialogs.IPromptRecognizeChoicesOptions" /></param>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Dialogs.IPromptRecognizer.RecognizeLocalizedChoices(Microsoft.Bot.Connector.IMessageActivity,System.String,System.Resources.ResourceManager,Microsoft.Bot.Builder.Dialogs.IPromptRecognizeChoicesOptions)">
+            <summary>Recognizer for a number.</summary>
+            <param name="message">Message context.</param>
+            <param name="choicesKey">Name of the resource with the choices.</param>
+            <param name="resourceManager">Resources with the localized choices.</param>
+            <param name="options">Options of the Recognizer. <see cref="T:Microsoft.Bot.Builder.Dialogs.IPromptRecognizeChoicesOptions" /></param>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Dialogs.IPromptRecognizer.RecognizeNumbers(Microsoft.Bot.Connector.IMessageActivity,Microsoft.Bot.Builder.Dialogs.IPromptRecognizeNumbersOptions)">
+            <summary>Recognizer for a number.</summary>
+            <param name="message">Message context.</param>
+            <param name="options">Options of the Recognizer. <see cref="T:Microsoft.Bot.Builder.Dialogs.IPromptRecognizeNumbersOptions" /></param>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Dialogs.IPromptRecognizer.RecognizeOrdinals(Microsoft.Bot.Connector.IMessageActivity)">
+            <summary>Recognizer for a ordinal number.</summary>
+            <param name="message">Message context.</param>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Dialogs.IPromptRecognizer.RecognizeTimes(Microsoft.Bot.Connector.IMessageActivity)">
+            <summary>Recognizer for a time or duration.</summary>
+            <param name="message">Message context.</param>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Dialogs.IPromptRecognizer.RecognizeBooleans(Microsoft.Bot.Connector.IMessageActivity)">
+            <summary>Recognizer for true/false expression.</summary>
+            <param name="message">Message context.</param>
         </member>
         <member name="T:Microsoft.Bot.Builder.Dialogs.IBotDataBag">
             <summary>
@@ -1036,23 +1279,24 @@
             Capability for a specific channel
             </summary>
         </member>
-        <member name="P:Microsoft.Bot.Builder.Dialogs.IChannelCapability.SupportButtons">
+        <member name="M:Microsoft.Bot.Builder.Dialogs.IChannelCapability.SupportsKeyboards(System.Int32)">
             <summary>
-            True if the channel support buttons, false otherwise.
+            Indicates if channel supports keyboard.
             </summary>
+            <param name="buttonCount"> number of buttons.</param>
+            <returns>True if the channel support number of buttons; false otherwise.</returns>
         </member>
-        <member name="T:Microsoft.Bot.Builder.Dialogs.IDetectChannelCapability">
+        <member name="M:Microsoft.Bot.Builder.Dialogs.IChannelCapability.SupportsSpeak">
             <summary>
-            Channel capability detector.
+            Indicates if channel is TTS enabled.
             </summary>
+            <returns>True if channel support TTS and the bot can set <see cref="P:Microsoft.Bot.Connector.Activity.Speak"/>; false otherwise.</returns>
         </member>
-        <member name="M:Microsoft.Bot.Builder.Dialogs.IDetectChannelCapability.Detect">
+        <member name="M:Microsoft.Bot.Builder.Dialogs.IChannelCapability.NeedsInputHint">
             <summary>
-            Detects channel capabilities.
+            Indicates if channel relies on <see cref="P:Microsoft.Bot.Connector.Activity.InputHint"/>.
             </summary>
-            <returns>
-            Capabilities of a channel.
-            </returns>
+            <returns>True if channel expect bot setting <see cref="P:Microsoft.Bot.Connector.Activity.InputHint"/>; false otherwise </returns>
         </member>
         <member name="T:Microsoft.Bot.Builder.Dialogs.LuisIntentAttribute">
             <summary>
@@ -1128,6 +1372,13 @@
             <param name="results">Results of multiple LUIS services calls.</param>
             <returns>A <see cref="T:Microsoft.Bot.Builder.Dialogs.LuisServiceResult" /> with the best scored <see cref="T:Microsoft.Bot.Builder.Luis.Models.IntentRecommendation" /> and related <see cref="T:Microsoft.Bot.Builder.Luis.Models.LuisResult" />,
             or null if no one of <paramref name="results" /> contains any intents.</returns>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Dialogs.LuisDialog`1.ModifyLuisRequest(Microsoft.Bot.Builder.Luis.LuisRequest)">
+            <summary>
+            Modify LUIS request before it is sent.
+            </summary>
+            <param name="request">Request so far.</param>
+            <returns>Modified request.</returns>
         </member>
         <member name="T:Microsoft.Bot.Builder.Dialogs.LuisActionDialog">
             <summary>
@@ -1236,6 +1487,36 @@
             The context for the execution of a dialog's conversational process.
             </summary>
         </member>
+        <member name="T:Microsoft.Bot.Builder.Dialogs.MessageOptions">
+            <summary>
+            Optional message properties that can be sent <see cref="M:Microsoft.Bot.Builder.Dialogs.Extensions.SayAsync(Microsoft.Bot.Builder.Dialogs.Internals.IBotToUser,System.String,System.String,Microsoft.Bot.Builder.Dialogs.MessageOptions,System.String,System.Threading.CancellationToken)"/>
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.MessageOptions.InputHint">
+            <summary>
+            Indicates whether the bot is accepting, expecting, or ignoring input
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.MessageOptions.TextFormat">
+            <summary>
+            Format of text fields [plain|markdown] Default:markdown
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.MessageOptions.AttachmentLayout">
+            <summary>
+            Hint for how to deal with multiple attachments: [list|carousel] Default:list
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.MessageOptions.Attachments">
+            <summary>
+            Attachments
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.MessageOptions.Entities">
+            <summary>
+            Collection of Entity objects, each of which contains metadata about this activity. Each Entity object is typed.
+            </summary>
+        </member>
         <member name="T:Microsoft.Bot.Builder.Dialogs.PromptStyle">
             <summary>
             The style of generated prompt
@@ -1248,13 +1529,9 @@
         </member>
         <member name="F:Microsoft.Bot.Builder.Dialogs.PromptStyle.Keyboard">
             <summary>
-            Generate keyboard card for choices that will be mapped to a 
-            <see cref="T:Microsoft.Bot.Connector.HeroCard"/> or a keyboard, e.g. Facebook quick replies
+            Map choices to a list of suggested actions that depending on the channel will be a keyboard, quick replies or a 
+            <see cref="T:Microsoft.Bot.Connector.HeroCard"/>.
             </summary>
-            <remarks>
-            Make sure to use <see cref="T:Microsoft.Bot.Builder.Dialogs.Internals.MapToChannelData_BotToUser"/> with <see cref="T:Microsoft.Bot.Builder.Dialogs.Internals.KeyboardCardMapper"/>
-            when you use this option
-            </remarks>
         </member>
         <member name="F:Microsoft.Bot.Builder.Dialogs.PromptStyle.AutoText">
             <summary>
@@ -1277,28 +1554,43 @@
             Do not show possible choices in the prompt
             </summary>
         </member>
-        <member name="T:Microsoft.Bot.Builder.Dialogs.PromptOptions`1">
+        <member name="T:Microsoft.Bot.Builder.Dialogs.IPromptOptions`1">
             <summary>
             Options for <see cref="T:Microsoft.Bot.Builder.Dialogs.PromptDialog"/>.
             </summary>
             <typeparam name="T"> The type of the options.</typeparam>
         </member>
-        <member name="F:Microsoft.Bot.Builder.Dialogs.PromptOptions`1.Prompt">
+        <member name="P:Microsoft.Bot.Builder.Dialogs.IPromptOptions`1.Prompt">
             <summary>
             The prompt.
             </summary>
         </member>
-        <member name="F:Microsoft.Bot.Builder.Dialogs.PromptOptions`1.Retry">
+        <member name="P:Microsoft.Bot.Builder.Dialogs.IPromptOptions`1.Retry">
             <summary>
             What to display on retry.
             </summary>
         </member>
-        <member name="F:Microsoft.Bot.Builder.Dialogs.PromptOptions`1.Options">
+        <member name="P:Microsoft.Bot.Builder.Dialogs.IPromptOptions`1.Speak">
+            <summary>
+            Speak tag (SSML markup for text to speech)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.IPromptOptions`1.RetrySpeak">
+            <summary>
+            Retry Speak tag (SSML markup for text to speech)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.IPromptOptions`1.Options">
             <summary>
             The choices to be returned when selected.
             </summary>
         </member>
-        <member name="F:Microsoft.Bot.Builder.Dialogs.PromptOptions`1.Descriptions">
+        <member name="P:Microsoft.Bot.Builder.Dialogs.IPromptOptions`1.Choices">
+            <summary>
+            The choices and synonyms to be returned when selected.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.IPromptOptions`1.Descriptions">
             <summary>
             The description of each possible option.
             </summary>
@@ -1307,7 +1599,82 @@
             Otherwise this should have the same number of values as Options and it contains the string to describe the value being selected.
             </remarks>
         </member>
-        <member name="F:Microsoft.Bot.Builder.Dialogs.PromptOptions`1.TooManyAttempts">
+        <member name="P:Microsoft.Bot.Builder.Dialogs.IPromptOptions`1.TooManyAttempts">
+            <summary>
+            What to display when user didn't say a valid response after <see cref="P:Microsoft.Bot.Builder.Dialogs.IPromptOptions`1.Attempts"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.IPromptOptions`1.Attempts">
+            <summary>
+            Maximum number of attempts.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.IPromptOptions`1.PromptStyler">
+            <summary>
+            Styler of the prompt <see cref="T:Microsoft.Bot.Builder.Dialogs.PromptStyler"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.IPromptOptions`1.DefaultRetry">
+            <summary>
+            Default retry prompt that is used if <see cref="P:Microsoft.Bot.Builder.Dialogs.IPromptOptions`1.Retry"/> is null.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.IPromptOptions`1.DefaultRetrySpeak">
+            <summary>
+            Default retry speak that is used if <see cref="P:Microsoft.Bot.Builder.Dialogs.IPromptOptions`1.RetrySpeak"/> is null.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.IPromptOptions`1.Recognizer">
+            <summary>
+            Entity Recognizer to parse the message content
+            </summary>
+        </member>
+        <member name="T:Microsoft.Bot.Builder.Dialogs.PromptOptions`1">
+            <summary>
+            Options for <see cref="T:Microsoft.Bot.Builder.Dialogs.PromptDialog"/>.
+            </summary>
+            <typeparam name="T"> The type of the options.</typeparam>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.PromptOptions`1.Prompt">
+            <summary>
+            The prompt.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.PromptOptions`1.Retry">
+            <summary>
+            What to display on retry.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.PromptOptions`1.Speak">
+            <summary>
+            Speak tag (SSML markup for text to speech)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.PromptOptions`1.RetrySpeak">
+            <summary>
+            Retry Speak tag (SSML markup for text to speech)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.PromptOptions`1.Options">
+            <summary>
+            The choices to be returned when selected.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.PromptOptions`1.Choices">
+            <summary>
+            The choices and synonyms to be returned when selected.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.PromptOptions`1.Descriptions">
+            <summary>
+            The description of each possible option.
+            </summary>
+            <remarks>
+            If this is null, then the descriptions will be the options converted to strings.
+            Otherwise this should have the same number of values as Options and it contains the string to describe the value being selected.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.PromptOptions`1.TooManyAttempts">
             <summary>
             What to display when user didn't say a valid response after <see cref="P:Microsoft.Bot.Builder.Dialogs.PromptOptions`1.Attempts"/>.
             </summary>
@@ -1317,22 +1684,32 @@
             Maximum number of attempts.
             </summary>
         </member>
-        <member name="F:Microsoft.Bot.Builder.Dialogs.PromptOptions`1.PromptStyler">
+        <member name="P:Microsoft.Bot.Builder.Dialogs.PromptOptions`1.PromptStyler">
             <summary>
             Styler of the prompt <see cref="T:Microsoft.Bot.Builder.Dialogs.PromptStyler"/>.
             </summary>
         </member>
         <member name="P:Microsoft.Bot.Builder.Dialogs.PromptOptions`1.DefaultRetry">
             <summary>
-            Default retry prompt that is used if <see cref="F:Microsoft.Bot.Builder.Dialogs.PromptOptions`1.Retry"/> is null.
+            Default retry prompt that is used if <see cref="P:Microsoft.Bot.Builder.Dialogs.PromptOptions`1.Retry"/> is null.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.PromptOptions`1.DefaultRetrySpeak">
+            <summary>
+            Default retry speak that is used if <see cref="P:Microsoft.Bot.Builder.Dialogs.PromptOptions`1.RetrySpeak"/> is null.
             </summary>
         </member>
         <member name="P:Microsoft.Bot.Builder.Dialogs.PromptOptions`1.DefaultTooManyAttempts">
             <summary>
-            Default <see cref="F:Microsoft.Bot.Builder.Dialogs.PromptOptions`1.TooManyAttempts"/> string that is used if <see cref="F:Microsoft.Bot.Builder.Dialogs.PromptOptions`1.TooManyAttempts"/> is null.
+            Default <see cref="P:Microsoft.Bot.Builder.Dialogs.PromptOptions`1.TooManyAttempts"/> string that is used if <see cref="P:Microsoft.Bot.Builder.Dialogs.PromptOptions`1.TooManyAttempts"/> is null.
             </summary>
         </member>
-        <member name="M:Microsoft.Bot.Builder.Dialogs.PromptOptions`1.#ctor(System.String,System.String,System.String,System.Collections.Generic.IReadOnlyList{`0},System.Int32,Microsoft.Bot.Builder.Dialogs.PromptStyler,System.Collections.Generic.IReadOnlyList{System.String})">
+        <member name="P:Microsoft.Bot.Builder.Dialogs.PromptOptions`1.Recognizer">
+            <summary>
+            Entity Recognizer to parse the message content
+            </summary>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Dialogs.PromptOptions`1.#ctor(System.String,System.String,System.String,System.Collections.Generic.IReadOnlyList{`0},System.Int32,Microsoft.Bot.Builder.Dialogs.PromptStyler,System.Collections.Generic.IReadOnlyList{System.String},System.String,System.String,Microsoft.Bot.Builder.Dialogs.IPromptRecognizer)">
             <summary>
             Constructs the prompt options.
             </summary>
@@ -1343,6 +1720,104 @@
             <param name="attempts"> Maximum number of attempts.</param>
             <param name="promptStyler"> The prompt styler.</param>
             <param name="descriptions">Descriptions for each prompt.</param>
+            <param name="speak"> The Speak tag (SSML markup for text to speech).</param>
+            <param name="retrySpeak"> What to display on retry Speak (SSML markup for text to speech).</param>
+            <param name="recognizer"> Entity Recognizer to parse the message content.</param>
+        </member>
+        <member name="T:Microsoft.Bot.Builder.Dialogs.PromptOptionsWithSynonyms`1">
+            <summary>
+            Options with synonyms for <see cref="T:Microsoft.Bot.Builder.Dialogs.PromptDialog"/>.
+            </summary>
+            <typeparam name="T"> The type of the options.</typeparam>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.PromptOptionsWithSynonyms`1.Prompt">
+            <summary>
+            The prompt.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.PromptOptionsWithSynonyms`1.Retry">
+            <summary>
+            What to display on retry.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.PromptOptionsWithSynonyms`1.Speak">
+            <summary>
+            Speak tag (SSML markup for text to speech)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.PromptOptionsWithSynonyms`1.RetrySpeak">
+            <summary>
+            Retry Speak tag (SSML markup for text to speech)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.PromptOptionsWithSynonyms`1.Options">
+            <summary>
+            The choices to be returned when selected.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.PromptOptionsWithSynonyms`1.Choices">
+            <summary>
+            The choices and synonyms to be returned when selected.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.PromptOptionsWithSynonyms`1.Descriptions">
+            <summary>
+            The description of each possible option.
+            </summary>
+            <remarks>
+            If this is null, then the descriptions will be the options converted to strings.
+            Otherwise this should have the same number of values as Options and it contains the string to describe the value being selected.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.PromptOptionsWithSynonyms`1.TooManyAttempts">
+            <summary>
+            What to display when user didn't say a valid response after <see cref="P:Microsoft.Bot.Builder.Dialogs.PromptOptionsWithSynonyms`1.Attempts"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.PromptOptionsWithSynonyms`1.Attempts">
+            <summary>
+            Maximum number of attempts.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.PromptOptionsWithSynonyms`1.PromptStyler">
+            <summary>
+            Styler of the prompt <see cref="T:Microsoft.Bot.Builder.Dialogs.PromptStyler"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.PromptOptionsWithSynonyms`1.DefaultRetry">
+            <summary>
+            Default retry prompt that is used if <see cref="P:Microsoft.Bot.Builder.Dialogs.PromptOptionsWithSynonyms`1.Retry"/> is null.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.PromptOptionsWithSynonyms`1.DefaultRetrySpeak">
+            <summary>
+            Default retry speak that is used if <see cref="P:Microsoft.Bot.Builder.Dialogs.PromptOptionsWithSynonyms`1.RetrySpeak"/> is null.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.PromptOptionsWithSynonyms`1.DefaultTooManyAttempts">
+            <summary>
+            Default <see cref="P:Microsoft.Bot.Builder.Dialogs.PromptOptionsWithSynonyms`1.TooManyAttempts"/> string that is used if <see cref="P:Microsoft.Bot.Builder.Dialogs.PromptOptionsWithSynonyms`1.TooManyAttempts"/> is null.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.PromptOptionsWithSynonyms`1.Recognizer">
+            <summary>
+            Entity Recognizer to parse the message content
+            </summary>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Dialogs.PromptOptionsWithSynonyms`1.#ctor(System.String,System.String,System.String,System.Collections.Generic.IReadOnlyDictionary{`0,System.Collections.Generic.IReadOnlyList{`0}},System.Int32,Microsoft.Bot.Builder.Dialogs.PromptStyler,System.Collections.Generic.IReadOnlyList{System.String},System.String,System.String,Microsoft.Bot.Builder.Dialogs.IPromptRecognizer)">
+            <summary>
+            Constructs the prompt options.
+            </summary>
+            <param name="prompt"> The prompt.</param>
+            <param name="retry"> What to display on retry.</param>
+            <param name="tooManyAttempts"> What to display when user didn't say a valid response after <see cref="P:Microsoft.Bot.Builder.Dialogs.PromptOptionsWithSynonyms`1.Attempts"/>.</param>
+            <param name="choices"> The prompt choice values.</param>
+            <param name="attempts"> Maximum number of attempts.</param>
+            <param name="promptStyler"> The prompt styler.</param>
+            <param name="descriptions">Descriptions for each prompt.</param>
+            <param name="speak"> The Speak tag (SSML markup for text to speech).</param>
+            <param name="retrySpeak"> What to display on retry Speak (SSML markup for text to speech).</param>
+            <param name="recognizer"> Entity Recognizer to parse the message content.</param>
         </member>
         <member name="T:Microsoft.Bot.Builder.Dialogs.PromptStyler">
             <summary>
@@ -1354,9 +1829,9 @@
             Style of the prompt <see cref="T:Microsoft.Bot.Builder.Dialogs.PromptStyle"/>.
             </summary>
         </member>
-        <member name="M:Microsoft.Bot.Builder.Dialogs.PromptStyler.Apply``1(Microsoft.Bot.Connector.IMessageActivity@,System.String,System.Collections.Generic.IReadOnlyList{``0},Microsoft.Bot.Builder.Dialogs.PromptStyle,System.Collections.Generic.IReadOnlyList{System.String})">
+        <member name="M:Microsoft.Bot.Builder.Dialogs.PromptStyler.Apply``1(Microsoft.Bot.Connector.IMessageActivity@,System.String,System.Collections.Generic.IReadOnlyList{``0},Microsoft.Bot.Builder.Dialogs.PromptStyle,System.Collections.Generic.IReadOnlyList{System.String},System.String)">
             <summary>
-            <see cref="M:Microsoft.Bot.Builder.Dialogs.PromptStyler.Apply(Microsoft.Bot.Connector.IMessageActivity@,System.String)"/>.
+            <see cref="M:Microsoft.Bot.Builder.Dialogs.PromptStyler.Apply(Microsoft.Bot.Connector.IMessageActivity@,System.String,System.String)"/>.
             </summary>
             <typeparam name="T"> The type of the options.</typeparam>
             <param name="message"> The message.</param>
@@ -1364,15 +1839,17 @@
             <param name="options"> The options.</param>
             <param name="promptStyle"> The prompt style.</param>
             <param name="descriptions">Descriptions for each option.</param>
+            <param name="speak"> The speak.</param>
         </member>
-        <member name="M:Microsoft.Bot.Builder.Dialogs.PromptStyler.Apply(Microsoft.Bot.Connector.IMessageActivity@,System.String)">
+        <member name="M:Microsoft.Bot.Builder.Dialogs.PromptStyler.Apply(Microsoft.Bot.Connector.IMessageActivity@,System.String,System.String)">
             <summary>
             Style a prompt and populate the <see cref="P:Microsoft.Bot.Connector.IMessageActivity.Text"/>.
             </summary>
             <param name="message"> The message that will contain the prompt.</param>
             <param name="prompt"> The prompt.</param>
+            <param name="speak"> The speak.</param>
         </member>
-        <member name="M:Microsoft.Bot.Builder.Dialogs.PromptStyler.Apply``1(Microsoft.Bot.Connector.IMessageActivity@,System.String,System.Collections.Generic.IReadOnlyList{``0},System.Collections.Generic.IReadOnlyList{System.String})">
+        <member name="M:Microsoft.Bot.Builder.Dialogs.PromptStyler.Apply``1(Microsoft.Bot.Connector.IMessageActivity@,System.String,System.Collections.Generic.IReadOnlyList{``0},System.Collections.Generic.IReadOnlyList{System.String},System.String)">
             <summary>
             Style a prompt and populate the message based on <see cref="F:Microsoft.Bot.Builder.Dialogs.PromptStyler.PromptStyle"/>.
             </summary>
@@ -1381,6 +1858,7 @@
             <param name="prompt"> The prompt.</param>
             <param name="options"> The options.</param>
             <param name="descriptions">Descriptions to display for each option.</param>
+            <param name="speak"> The speak.</param>
             <remarks>
             <typeparamref name="T"/> should implement <see cref="M:System.Object.ToString"/> unless descriptions are supplied.
             </remarks>
@@ -1397,7 +1875,13 @@
             <param name="retry">    What to show on retry. </param>
             <param name="attempts"> The number of times to retry. </param>
         </member>
-        <member name="M:Microsoft.Bot.Builder.Dialogs.PromptDialog.Confirm(Microsoft.Bot.Builder.Dialogs.IDialogContext,Microsoft.Bot.Builder.Dialogs.ResumeAfter{System.Boolean},System.String,System.String,System.Int32,Microsoft.Bot.Builder.Dialogs.PromptStyle)">
+        <member name="M:Microsoft.Bot.Builder.Dialogs.PromptDialog.Text(Microsoft.Bot.Builder.Dialogs.IDialogContext,Microsoft.Bot.Builder.Dialogs.ResumeAfter{System.String},Microsoft.Bot.Builder.Dialogs.IPromptOptions{System.String})">
+            <summary>   Prompt for a string. </summary>
+            <param name="context">  The context. </param>
+            <param name="resume">   Resume handler. </param>
+            <param name="promptOptions"> The options for the prompt, <see cref="T:Microsoft.Bot.Builder.Dialogs.IPromptOptions`1"/>.</param>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Dialogs.PromptDialog.Confirm(Microsoft.Bot.Builder.Dialogs.IDialogContext,Microsoft.Bot.Builder.Dialogs.ResumeAfter{System.Boolean},System.String,System.String,System.Int32,Microsoft.Bot.Builder.Dialogs.PromptStyle,System.String[],System.String[][])">
             <summary>   Ask a yes/no question. </summary>
             <param name="context">  The context. </param>
             <param name="resume">   Resume handler. </param>
@@ -1405,30 +1889,39 @@
             <param name="retry">    What to show on retry. </param>
             <param name="attempts"> The number of times to retry. </param>
             <param name="promptStyle"> Style of the prompt <see cref="T:Microsoft.Bot.Builder.Dialogs.PromptStyle" /> </param>
+            <param name="options">Button labels for yes/no choices.</param>
+            <param name="patterns">Yes and no alternatives for matching input where first dimension is either <see cref="F:Microsoft.Bot.Builder.Dialogs.PromptDialog.PromptConfirm.Yes"/> or <see cref="F:Microsoft.Bot.Builder.Dialogs.PromptDialog.PromptConfirm.No"/> and the arrays are alternative strings to match.</param>
         </member>
-        <member name="M:Microsoft.Bot.Builder.Dialogs.PromptDialog.Confirm(Microsoft.Bot.Builder.Dialogs.IDialogContext,Microsoft.Bot.Builder.Dialogs.ResumeAfter{System.Boolean},Microsoft.Bot.Builder.Dialogs.PromptOptions{System.String})">
+        <member name="M:Microsoft.Bot.Builder.Dialogs.PromptDialog.Confirm(Microsoft.Bot.Builder.Dialogs.IDialogContext,Microsoft.Bot.Builder.Dialogs.ResumeAfter{System.Boolean},Microsoft.Bot.Builder.Dialogs.IPromptOptions{System.String},System.String[][])">
             <summary>
             Ask a yes/no questions.
             </summary>
             <param name="context"> The dialog context.</param>
             <param name="resume"> Resume handler.</param>
-            <param name="promptOptions"> The options for the prompt, <see cref="T:Microsoft.Bot.Builder.Dialogs.PromptOptions`1"/>.</param>
+            <param name="promptOptions"> The options for the prompt, <see cref="T:Microsoft.Bot.Builder.Dialogs.IPromptOptions`1"/>.</param>
+            <param name="patterns">Yes and no alternatives for matching input where first dimension is either <see cref="F:Microsoft.Bot.Builder.Dialogs.PromptDialog.PromptConfirm.Yes"/> or <see cref="F:Microsoft.Bot.Builder.Dialogs.PromptDialog.PromptConfirm.No"/> and the arrays are alternative strings to match.</param>
         </member>
-        <member name="M:Microsoft.Bot.Builder.Dialogs.PromptDialog.Number(Microsoft.Bot.Builder.Dialogs.IDialogContext,Microsoft.Bot.Builder.Dialogs.ResumeAfter{System.Int64},System.String,System.String,System.Int32)">
+        <member name="M:Microsoft.Bot.Builder.Dialogs.PromptDialog.Number(Microsoft.Bot.Builder.Dialogs.IDialogContext,Microsoft.Bot.Builder.Dialogs.ResumeAfter{System.Int64},System.String,System.String,System.Int32,System.String,System.Nullable{System.Int64},System.Nullable{System.Int64})">
             <summary>   Prompt for a long. </summary>
             <param name="context">  The context. </param>
             <param name="resume">   Resume handler. </param>
             <param name="prompt">   The prompt to show to the user. </param>
             <param name="retry">    What to show on retry. </param>
             <param name="attempts"> The number of times to retry. </param>
+            <param name="speak">    Speak tag (SSML markup for text to speech)</param>
+            <param name="max">      Maximum value.</param>
+            <param name="min">      Minimun value.</param>
         </member>
-        <member name="M:Microsoft.Bot.Builder.Dialogs.PromptDialog.Number(Microsoft.Bot.Builder.Dialogs.IDialogContext,Microsoft.Bot.Builder.Dialogs.ResumeAfter{System.Double},System.String,System.String,System.Int32)">
+        <member name="M:Microsoft.Bot.Builder.Dialogs.PromptDialog.Number(Microsoft.Bot.Builder.Dialogs.IDialogContext,Microsoft.Bot.Builder.Dialogs.ResumeAfter{System.Double},System.String,System.String,System.Int32,System.String,System.Nullable{System.Double},System.Nullable{System.Double})">
             <summary>   Prompt for a double. </summary>
             <param name="context">  The context. </param>
             <param name="resume">   Resume handler. </param>
             <param name="prompt">   The prompt to show to the user. </param>
             <param name="retry">    What to show on retry. </param>
             <param name="attempts"> The number of times to retry. </param>
+            <param name="speak">    Speak tag (SSML markup for text to speech)</param>
+            <param name="max">      Maximum value.</param>
+            <param name="min">      Minimun value.</param>
         </member>
         <member name="M:Microsoft.Bot.Builder.Dialogs.PromptDialog.Choice``1(Microsoft.Bot.Builder.Dialogs.IDialogContext,Microsoft.Bot.Builder.Dialogs.ResumeAfter{``0},System.Collections.Generic.IEnumerable{``0},System.String,System.String,System.Int32,Microsoft.Bot.Builder.Dialogs.PromptStyle,System.Collections.Generic.IEnumerable{System.String})">
             <summary>   Prompt for one of a set of choices. </summary>
@@ -1441,7 +1934,22 @@
             <param name="promptStyle"> Style of the prompt <see cref="T:Microsoft.Bot.Builder.Dialogs.PromptStyle" /> </param>
             <param name="descriptions">Descriptions to display for choices.</param>
         </member>
-        <member name="M:Microsoft.Bot.Builder.Dialogs.PromptDialog.Choice``1(Microsoft.Bot.Builder.Dialogs.IDialogContext,Microsoft.Bot.Builder.Dialogs.ResumeAfter{``0},Microsoft.Bot.Builder.Dialogs.PromptOptions{``0})">
+        <member name="M:Microsoft.Bot.Builder.Dialogs.PromptDialog.Choice``1(Microsoft.Bot.Builder.Dialogs.IDialogContext,Microsoft.Bot.Builder.Dialogs.ResumeAfter{``0},System.Collections.Generic.IDictionary{``0,System.Collections.Generic.IEnumerable{``0}},System.String,System.String,System.Int32,Microsoft.Bot.Builder.Dialogs.PromptStyle,System.Collections.Generic.IEnumerable{System.String},System.Boolean,System.Boolean,System.Boolean,System.Double)">
+            <summary>   Prompt for one of a set of choices. </summary>
+            <param name="context">  The context. </param>
+            <param name="resume">   Resume handler. </param>
+            <param name="choices"> Dictionary with the options to choose from as a key and their synonyms as a value.</param>
+            <param name="prompt">   The prompt to show to the user. </param>
+            <param name="retry">    What to show on retry. </param>
+            <param name="attempts"> The number of times to retry. </param>
+            <param name="promptStyle"> Style of the prompt <see cref="T:Microsoft.Bot.Builder.Dialogs.PromptStyle" /> </param>
+            <param name="descriptions">Descriptions to display for choices.</param>
+            <param name="recognizeChoices">(Optional) if true, the prompt will attempt to recognize the selected value using the choices themselves. The default value is "true".</param>
+            <param name="recognizeNumbers">(Optional) if true, the prompt will attempt to recognize numbers in the users utterance as the index of the choice to return. The default value is "true".</param>
+            <param name="recognizeOrdinals">(Optional) if true, the prompt will attempt to recognize ordinals like "the first one" or "the second one" as the index of the choice to return. The default value is "true".</param>
+            <param name="minScore">(Optional) minimum score from 0.0 - 1.0 needed for a recognized choice to be considered a match. The default value is "0.4".</param>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Dialogs.PromptDialog.Choice``1(Microsoft.Bot.Builder.Dialogs.IDialogContext,Microsoft.Bot.Builder.Dialogs.ResumeAfter{``0},Microsoft.Bot.Builder.Dialogs.IPromptOptions{``0},System.Boolean,System.Boolean,System.Boolean,System.Double)">
             <summary>
             Prompt for one of a set of choices.
             </summary>
@@ -1450,6 +1958,10 @@
             <param name="context"> The dialog context.</param>
             <param name="resume"> Resume handler.</param>
             <param name="promptOptions"> The prompt options.</param>
+            <param name="recognizeChoices">(Optional) if true, the prompt will attempt to recognize the selected value using the choices themselves. The default value is "true".</param>
+            <param name="recognizeNumbers">(Optional) if true, the prompt will attempt to recognize numbers in the users utterance as the index of the choice to return. The default value is "true".</param>
+            <param name="recognizeOrdinals">(Optional) if true, the prompt will attempt to recognize ordinals like "the first one" or "the second one" as the index of the choice to return. The default value is "true".</param>
+            <param name="minScore">(Optional) minimum score from 0.0 - 1.0 needed for a recognized choice to be considered a match. The default value is "0.4".</param>
         </member>
         <member name="M:Microsoft.Bot.Builder.Dialogs.PromptDialog.Attachment(Microsoft.Bot.Builder.Dialogs.IDialogContext,Microsoft.Bot.Builder.Dialogs.ResumeAfter{System.Collections.Generic.IEnumerable{Microsoft.Bot.Connector.Attachment}},System.String,System.Collections.Generic.IEnumerable{System.String},System.String,System.Int32)">
             <summary>
@@ -1472,13 +1984,13 @@
             <param name="retry">    What to display on retry. </param>
             <param name="attempts"> Maximum number of attempts. </param>
         </member>
-        <member name="M:Microsoft.Bot.Builder.Dialogs.PromptDialog.PromptString.#ctor(Microsoft.Bot.Builder.Dialogs.PromptOptions{System.String})">
+        <member name="M:Microsoft.Bot.Builder.Dialogs.PromptDialog.PromptString.#ctor(Microsoft.Bot.Builder.Dialogs.IPromptOptions{System.String})">
             <summary>   Constructor for a prompt string dialog. </summary>
             <param name="promptOptions"> THe prompt options.</param>
         </member>
         <member name="T:Microsoft.Bot.Builder.Dialogs.PromptDialog.PromptConfirm">
             <summary>   Prompt for a confirmation. </summary>
-            <remarks>   Normally used through <see cref="M:Microsoft.Bot.Builder.Dialogs.PromptDialog.Confirm(Microsoft.Bot.Builder.Dialogs.IDialogContext,Microsoft.Bot.Builder.Dialogs.ResumeAfter{System.Boolean},System.String,System.String,System.Int32,Microsoft.Bot.Builder.Dialogs.PromptStyle)"/>.</remarks>
+            <remarks>   Normally used through <see cref="M:Microsoft.Bot.Builder.Dialogs.PromptDialog.Confirm(Microsoft.Bot.Builder.Dialogs.IDialogContext,Microsoft.Bot.Builder.Dialogs.ResumeAfter{System.Boolean},System.String,System.String,System.Int32,Microsoft.Bot.Builder.Dialogs.PromptStyle,System.String[],System.String[][])"/>.</remarks>
         </member>
         <member name="F:Microsoft.Bot.Builder.Dialogs.PromptDialog.PromptConfirm.Yes">
             <summary>
@@ -1492,7 +2004,7 @@
         </member>
         <member name="P:Microsoft.Bot.Builder.Dialogs.PromptDialog.PromptConfirm.Options">
             <summary>
-            The yes, no options for confirmation prompt
+            The yes, no choice labels for confirmation prompt
             </summary>
         </member>
         <member name="P:Microsoft.Bot.Builder.Dialogs.PromptDialog.PromptConfirm.Patterns">
@@ -1500,52 +2012,85 @@
             The patterns for matching yes/no responses in the confirmation prompt.
             </summary>
         </member>
-        <member name="M:Microsoft.Bot.Builder.Dialogs.PromptDialog.PromptConfirm.#ctor(System.String,System.String,System.Int32,Microsoft.Bot.Builder.Dialogs.PromptStyle)">
+        <member name="M:Microsoft.Bot.Builder.Dialogs.PromptDialog.PromptConfirm.#ctor(System.String,System.String,System.Int32,Microsoft.Bot.Builder.Dialogs.PromptStyle,System.String[],System.String[][])">
             <summary>   Constructor for a prompt confirmation dialog. </summary>
             <param name="prompt">   The prompt. </param>
             <param name="retry">    What to display on retry. </param>
             <param name="attempts"> Maximum number of attempts. </param>
             <param name="promptStyle"> Style of the prompt <see cref="T:Microsoft.Bot.Builder.Dialogs.PromptStyle" /> </param>
+            <param name="options">Names for yes and no  options.</param>
+            <param name="patterns">Yes and no alternatives for matching input where first dimension is either <see cref="F:Microsoft.Bot.Builder.Dialogs.PromptDialog.PromptConfirm.Yes"/> or <see cref="F:Microsoft.Bot.Builder.Dialogs.PromptDialog.PromptConfirm.No"/> and the arrays are alternative strings to match.</param>
         </member>
-        <member name="M:Microsoft.Bot.Builder.Dialogs.PromptDialog.PromptConfirm.#ctor(Microsoft.Bot.Builder.Dialogs.PromptOptions{System.String})">
+        <member name="M:Microsoft.Bot.Builder.Dialogs.PromptDialog.PromptConfirm.#ctor(Microsoft.Bot.Builder.Dialogs.IPromptOptions{System.String},System.String[][])">
             <summary>
             Constructor for a prompt confirmation dialog.
             </summary>
             <param name="promptOptions"> THe prompt options.</param>
+            <param name="patterns"></param>
         </member>
         <member name="T:Microsoft.Bot.Builder.Dialogs.PromptDialog.PromptInt64">
-            <summary>   Prompt for a confirmation. </summary>
-            <remarks>   Normally used through <see cref="M:Microsoft.Bot.Builder.Dialogs.PromptDialog.Number(Microsoft.Bot.Builder.Dialogs.IDialogContext,Microsoft.Bot.Builder.Dialogs.ResumeAfter{System.Int64},System.String,System.String,System.Int32)"/>.</remarks>
+            <summary>   Prompt for a Int64 </summary>
+            <remarks>   Normally used through <see cref="M:Microsoft.Bot.Builder.Dialogs.PromptDialog.Number(Microsoft.Bot.Builder.Dialogs.IDialogContext,Microsoft.Bot.Builder.Dialogs.ResumeAfter{System.Int64},System.String,System.String,System.Int32,System.String,System.Nullable{System.Int64},System.Nullable{System.Int64})"/>.</remarks>
         </member>
-        <member name="M:Microsoft.Bot.Builder.Dialogs.PromptDialog.PromptInt64.#ctor(System.String,System.String,System.Int32)">
+        <member name="P:Microsoft.Bot.Builder.Dialogs.PromptDialog.PromptInt64.Min">
+            <summary>
+            (Optional) Minimum value allowed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.PromptDialog.PromptInt64.Max">
+            <summary>
+            (Optional) Maximum value allowed.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Dialogs.PromptDialog.PromptInt64.#ctor(System.String,System.String,System.Int32,System.String,System.Nullable{System.Int64},System.Nullable{System.Int64})">
             <summary>   Constructor for a prompt int64 dialog. </summary>
             <param name="prompt">   The prompt. </param>
             <param name="retry">    What to display on retry. </param>
             <param name="attempts"> Maximum number of attempts. </param>
+            <param name="speak">    Speak tag (SSML markup for text to speech)</param>
+            <param name="max">      Maximum value.</param>
+            <param name="min">      Minimun value.</param>
         </member>
-        <member name="M:Microsoft.Bot.Builder.Dialogs.PromptDialog.PromptInt64.#ctor(Microsoft.Bot.Builder.Dialogs.PromptOptions{System.Int64})">
+        <member name="M:Microsoft.Bot.Builder.Dialogs.PromptDialog.PromptInt64.#ctor(Microsoft.Bot.Builder.Dialogs.PromptOptions{System.Int64},System.Nullable{System.Int64},System.Nullable{System.Int64})">
             <summary>   Constructor for a prompt int64 dialog. </summary>
             <param name="promptOptions"> THe prompt options.</param>
+            <param name="max">Maximum value.</param>
+            <param name="min">Minimun value.</param>
         </member>
         <member name="T:Microsoft.Bot.Builder.Dialogs.PromptDialog.PromptDouble">
             <summary>   Prompt for a double. </summary>
-            <remarks>   Normally used through <see cref="M:Microsoft.Bot.Builder.Dialogs.PromptDialog.Number(Microsoft.Bot.Builder.Dialogs.IDialogContext,Microsoft.Bot.Builder.Dialogs.ResumeAfter{System.Double},System.String,System.String,System.Int32)"/>.</remarks>
+            <remarks>   Normally used through <see cref="M:Microsoft.Bot.Builder.Dialogs.PromptDialog.Number(Microsoft.Bot.Builder.Dialogs.IDialogContext,Microsoft.Bot.Builder.Dialogs.ResumeAfter{System.Double},System.String,System.String,System.Int32,System.String,System.Nullable{System.Double},System.Nullable{System.Double})"/>.</remarks>
         </member>
-        <member name="M:Microsoft.Bot.Builder.Dialogs.PromptDialog.PromptDouble.#ctor(System.String,System.String,System.Int32)">
+        <member name="P:Microsoft.Bot.Builder.Dialogs.PromptDialog.PromptDouble.Min">
+            <summary>
+            (Optional) Minimum value allowed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Dialogs.PromptDialog.PromptDouble.Max">
+            <summary>
+            (Optional) Maximum value allowed.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Dialogs.PromptDialog.PromptDouble.#ctor(System.String,System.String,System.Int32,System.String,System.Nullable{System.Double},System.Nullable{System.Double})">
             <summary>   Constructor for a prompt double dialog. </summary>
             <param name="prompt">   The prompt. </param>
             <param name="retry">    What to display on retry. </param>
             <param name="attempts"> Maximum number of attempts. </param>
+            <param name="speak">    Speak tag (SSML markup for text to speech)</param>
+            <param name="max">      Maximum value.</param>
+            <param name="min">      Minimun value.</param>
         </member>
-        <member name="M:Microsoft.Bot.Builder.Dialogs.PromptDialog.PromptDouble.#ctor(Microsoft.Bot.Builder.Dialogs.PromptOptions{System.Double})">
+        <member name="M:Microsoft.Bot.Builder.Dialogs.PromptDialog.PromptDouble.#ctor(Microsoft.Bot.Builder.Dialogs.PromptOptions{System.Double},System.Nullable{System.Double},System.Nullable{System.Double})">
             <summary>   Constructor for a prompt double dialog. </summary>
             <param name="promptOptions"> THe prompt options.</param>
+            <param name="max">Maximum value.</param>
+            <param name="min">Minimun value.</param>
         </member>
         <member name="T:Microsoft.Bot.Builder.Dialogs.PromptDialog.PromptChoice`1">
             <summary>   Prompt for a choice from a set of choices. </summary>
             <remarks>   Normally used through <see cref="M:Microsoft.Bot.Builder.Dialogs.PromptDialog.Choice``1(Microsoft.Bot.Builder.Dialogs.IDialogContext,Microsoft.Bot.Builder.Dialogs.ResumeAfter{``0},System.Collections.Generic.IEnumerable{``0},System.String,System.String,System.Int32,Microsoft.Bot.Builder.Dialogs.PromptStyle,System.Collections.Generic.IEnumerable{System.String})"/>.</remarks>
         </member>
-        <member name="M:Microsoft.Bot.Builder.Dialogs.PromptDialog.PromptChoice`1.#ctor(System.Collections.Generic.IEnumerable{`0},System.String,System.String,System.Int32,Microsoft.Bot.Builder.Dialogs.PromptStyle,System.Collections.Generic.IEnumerable{System.String})">
+        <member name="M:Microsoft.Bot.Builder.Dialogs.PromptDialog.PromptChoice`1.#ctor(System.Collections.Generic.IEnumerable{`0},System.String,System.String,System.Int32,Microsoft.Bot.Builder.Dialogs.PromptStyle,System.Collections.Generic.IEnumerable{System.String},System.Boolean,System.Boolean,System.Boolean,System.Double)">
             <summary>   Constructor for a prompt choice dialog. </summary>
             <param name="options">Enumerable of the options to choose from.</param>
             <param name="prompt">   The prompt. </param>
@@ -1553,12 +2098,33 @@
             <param name="attempts"> Maximum number of attempts. </param>
             <param name="promptStyle"> Style of the prompt <see cref="T:Microsoft.Bot.Builder.Dialogs.PromptStyle" /> </param>
             <param name="descriptions">Descriptions to show for each option.</param>
+            <param name="recognizeChoices">(Optional) if true, the prompt will attempt to recognize the selected value using the choices themselves. The default value is "true".</param>
+            <param name="recognizeNumbers">(Optional) if true, the prompt will attempt to recognize numbers in the users utterance as the index of the choice to return. The default value is "true".</param>
+            <param name="recognizeOrdinals">(Optional) if true, the prompt will attempt to recognize ordinals like "the first one" or "the second one" as the index of the choice to return. The default value is "true".</param>
+            <param name="minScore">(Optional) minimum score from 0.0 - 1.0 needed for a recognized choice to be considered a match. The default value is "0.4".</param>
         </member>
-        <member name="M:Microsoft.Bot.Builder.Dialogs.PromptDialog.PromptChoice`1.#ctor(Microsoft.Bot.Builder.Dialogs.PromptOptions{`0})">
+        <member name="M:Microsoft.Bot.Builder.Dialogs.PromptDialog.PromptChoice`1.#ctor(System.Collections.Generic.IDictionary{`0,System.Collections.Generic.IEnumerable{`0}},System.String,System.String,System.Int32,Microsoft.Bot.Builder.Dialogs.PromptStyle,System.Collections.Generic.IEnumerable{System.String},System.Boolean,System.Boolean,System.Boolean,System.Double)">
+            <summary>   Constructor for a prompt choice dialog. </summary>
+            <param name="choices">Dictionary with the options to choose from as a key and their synonyms as a value.</param>
+            <param name="prompt">   The prompt. </param>
+            <param name="retry">    What to display on retry. </param>
+            <param name="attempts"> Maximum number of attempts. </param>
+            <param name="promptStyle"> Style of the prompt <see cref="T:Microsoft.Bot.Builder.Dialogs.PromptStyle" /> </param>
+            <param name="descriptions">Descriptions to show for each option.</param>
+            <param name="recognizeChoices">(Optional) if true, the prompt will attempt to recognize the selected value using the choices themselves. The default value is "true".</param>
+            <param name="recognizeNumbers">(Optional) if true, the prompt will attempt to recognize numbers in the users utterance as the index of the choice to return. The default value is "true".</param>
+            <param name="recognizeOrdinals">(Optional) if true, the prompt will attempt to recognize ordinals like "the first one" or "the second one" as the index of the choice to return. The default value is "true".</param>
+            <param name="minScore">(Optional) minimum score from 0.0 - 1.0 needed for a recognized choice to be considered a match. The default value is "0.4".</param>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Dialogs.PromptDialog.PromptChoice`1.#ctor(Microsoft.Bot.Builder.Dialogs.IPromptOptions{`0},System.Boolean,System.Boolean,System.Boolean,System.Double)">
             <summary>
             Constructs a choice dialog.
             </summary>
-            <param name="promptOptions"> The prompt options</param>
+            <param name="promptOptions"> The prompt options</param>s
+            <param name="recognizeChoices">(Optional) if true, the prompt will attempt to recognize the selected value using the choices themselves. The default value is "true".</param>
+            <param name="recognizeNumbers">(Optional) if true, the prompt will attempt to recognize numbers in the users utterance as the index of the choice to return. The default value is "true".</param>
+            <param name="recognizeOrdinals">(Optional) if true, the prompt will attempt to recognize ordinals like "the first one" or "the second one" as the index of the choice to return. The default value is "true".</param>
+            <param name="minScore">(Optional) minimum score from 0.0 - 1.0 needed for a recognized choice to be considered a match. The default value is "0.4".</param>
         </member>
         <member name="T:Microsoft.Bot.Builder.Dialogs.PromptDialog.PromptAttachment">
             <summary> Prompt for an attachment</summary>
@@ -1589,12 +2155,28 @@
             </summary>
             <typeparam name="T"> The type of the item.</typeparam>
         </member>
+        <member name="T:Microsoft.Bot.Builder.Dialogs.AwaitableFromSource`2">
+            <summary>
+            Creates a <see cref="T:Microsoft.Bot.Builder.Dialogs.IAwaitable`1"/> from source passed to constructor.
+            </summary>
+            <typeparam name="TSource"> The type of the source for build the item.</typeparam>
+            <typeparam name="TItem">The type if the item.</typeparam>
+        </member>
         <member name="M:Microsoft.Bot.Builder.Dialogs.Awaitable.FromItem``1(``0)">
             <summary>
             Wraps item in a <see cref="T:Microsoft.Bot.Builder.Dialogs.IAwaitable`1"/>.
             </summary>
             <typeparam name="T">Type of the item.</typeparam>
             <param name="item">The item that will be wrapped.</param>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Dialogs.Awaitable.FromSource``2(``0,System.Func{``0,System.Threading.Tasks.Task{``1}})">
+            <summary>
+            Wraps source to build item as a <see cref="T:Microsoft.Bot.Builder.Dialogs.IAwaitable`1"/>.
+            </summary>
+            <typeparam name="TSource"> The type of the source for build the item.</typeparam>
+            <typeparam name="TItem">The type if the item.</typeparam>
+            <param name="source">The source item that will be wrapped.</param>
+            <param name="resolver">The resolution function from source to item.</param>
         </member>
         <member name="M:Microsoft.Bot.Builder.Internals.Fibers.Extensions.Wait``2(Microsoft.Bot.Builder.Internals.Fibers.IFiber{``0},Microsoft.Bot.Builder.Internals.Fibers.Rest{``0,``1})">
             <summary>
@@ -2103,7 +2685,7 @@
         </member>
         <member name="F:Microsoft.Bot.Builder.ConnectorEx.ResumptionContext.RESUMPTION_CONTEXT_KEY">
             <summary>
-            The key for <see cref="T:Microsoft.Bot.Builder.ConnectorEx.ResumptionData"/> in <see cref="F:Microsoft.Bot.Builder.ConnectorEx.ResumptionContext.botDataBag"/>.
+            The key for <see cref="T:Microsoft.Bot.Builder.ConnectorEx.ResumptionData"/> in the resumption context's data bag.
             </summary>
         </member>
         <member name="F:Microsoft.Bot.Builder.ConnectorEx.ResumptionContext.botDataBag">
@@ -2113,13 +2695,13 @@
         </member>
         <member name="M:Microsoft.Bot.Builder.ConnectorEx.ResumptionContext.LoadDataAsync(System.Threading.CancellationToken)">
             <summary>
-            Load <see cref="T:Microsoft.Bot.Builder.ConnectorEx.ResumptionData"/> from <see cref="F:Microsoft.Bot.Builder.ConnectorEx.ResumptionContext.botDataBag"/>.
+            Loads the <see cref="T:Microsoft.Bot.Builder.ConnectorEx.ResumptionData"/> from the resumption context's data bag.
             </summary>
             <param name="token"> The cancellation token.</param>
         </member>
         <member name="M:Microsoft.Bot.Builder.ConnectorEx.ResumptionContext.SaveDataAsync(Microsoft.Bot.Builder.ConnectorEx.ResumptionData,System.Threading.CancellationToken)">
             <summary>
-            Save the <paramref name="data"/> in <see cref="F:Microsoft.Bot.Builder.ConnectorEx.ResumptionContext.botDataBag"/>.
+            Saves the <paramref name="data"/> in the resumption context's data bag.
             </summary>
             <param name="data"> The <see cref="T:Microsoft.Bot.Builder.ConnectorEx.ResumptionData"/>.</param>
             <param name="token"> The cancellation token.</param>
@@ -2894,15 +3476,11 @@
             Language related utilities.
             </summary>
         </member>
-        <member name="F:Microsoft.Bot.Builder.FormFlow.Advanced.Language.StopWords">
+        <member name="M:Microsoft.Bot.Builder.FormFlow.Advanced.Language.Resources">
             <summary>
-            Language stop words.
+            Return language specific resources for the current culture.
             </summary>
-        </member>
-        <member name="F:Microsoft.Bot.Builder.FormFlow.Advanced.Language.Articles">
-            <summary>
-            Language articles.
-            </summary>
+            <returns>Language resources.</returns>
         </member>
         <member name="M:Microsoft.Bot.Builder.FormFlow.Advanced.Language.NonWord(System.String)">
             <summary>
@@ -2916,21 +3494,21 @@
             Test to see if a word is all noise.
             </summary>
             <param name="word">Word to test.</param>
-            <returns>True if word is a number, a <see cref="M:Microsoft.Bot.Builder.FormFlow.Advanced.Language.NonWord(System.String)"/> or a <see cref="F:Microsoft.Bot.Builder.FormFlow.Advanced.Language.StopWords"/>.</returns>
+            <returns>True if word is a number, a <see cref="M:Microsoft.Bot.Builder.FormFlow.Advanced.Language.NonWord(System.String)"/> or a stop word."/>.</returns>
         </member>
         <member name="M:Microsoft.Bot.Builder.FormFlow.Advanced.Language.NoiseResponse(System.String)">
             <summary>
             Test to see if a word can be ignored in a resposne.
             </summary>
             <param name="word">Word to test.</param>
-            <returns>True if word is a <see cref="M:Microsoft.Bot.Builder.FormFlow.Advanced.Language.NonWord(System.String)"/> or a <see cref="F:Microsoft.Bot.Builder.FormFlow.Advanced.Language.StopWords"/>.</returns>
+            <returns>True if word is a <see cref="M:Microsoft.Bot.Builder.FormFlow.Advanced.Language.NonWord(System.String)"/> or stop words.</returns>
         </member>
         <member name="M:Microsoft.Bot.Builder.FormFlow.Advanced.Language.ArticleOrNone(System.String)">
             <summary>
             Test a word for articles or noise.
             </summary>
             <param name="word">Word to test.</param>
-            <returns>True if word is <see cref="M:Microsoft.Bot.Builder.FormFlow.Advanced.Language.NonWord(System.String)"/> or <see cref="F:Microsoft.Bot.Builder.FormFlow.Advanced.Language.Articles"/>.</returns>
+            <returns>True if word is <see cref="M:Microsoft.Bot.Builder.FormFlow.Advanced.Language.NonWord(System.String)"/> or an article.</returns>
         </member>
         <member name="M:Microsoft.Bot.Builder.FormFlow.Advanced.Language.NonNoiseWords(System.Collections.Generic.IEnumerable{System.String})">
             <summary>
@@ -3124,6 +3702,12 @@
             </summary>
             <param name="field">DateTime field.</param>
         </member>
+        <member name="T:Microsoft.Bot.Builder.FormFlow.Advanced.RecognizeAttachment`1">
+            <summary>
+            Recognize an attachment within the activity instance.
+            </summary>
+            <typeparam name="T">Form state.</typeparam>
+        </member>
         <member name="T:Microsoft.Bot.Builder.FormFlow.Advanced.TemplateBaseAttribute">
             <summary>
             Abstract base class used by all attributes that use \ref patterns.
@@ -3221,6 +3805,16 @@
             </summary>
             <param name="other">The template to copy from.</param>
         </member>
+        <member name="T:Microsoft.Bot.Builder.FormFlow.Advanced.AttachmentValidatorAttribute">
+            <summary>
+            Abstract base class used for attachment validation.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Bot.Builder.FormFlow.Advanced.AttachmentContentTypeValidatorAttribute">
+            <summary>
+            Attachment content-type validator attribute.
+            </summary>
+        </member>
         <member name="M:Microsoft.Bot.Builder.FormFlow.Advanced.Extensions.IsICollection(System.Type)">
             <summary>
             Type implements ICollection.
@@ -3283,6 +3877,20 @@
             </summary>
             <param name="type">Type to check.</param>
             <returns>True if nullable.</returns>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.FormFlow.Advanced.Extensions.IsAttachmentCollection(System.Type)">
+            <summary>
+            Type is enumerable of awaitable attachments.
+            </summary>
+            <param name="type">Type to check.</param>
+            <returns>True if enumerable of awaitable attachments.</returns>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.FormFlow.Advanced.Extensions.IsAttachmentType(System.Type)">
+            <summary>
+            Type is AwaitableAttachment or descendant.
+            </summary>
+            <param name="type">Type to check.</param>
+            <returns>True if awaitable attachment or descendant.</returns>
         </member>
         <member name="M:Microsoft.Bot.Builder.FormFlow.Advanced.Extensions.GetGenericElementType(System.Type)">
             <summary>
@@ -3557,11 +4165,11 @@
             </summary>
             <returns>Help on what the recognizer accepts.</returns>
         </member>
-        <member name="M:Microsoft.Bot.Builder.FormFlow.Advanced.IRecognize`1.Matches(System.String,System.Object)">
+        <member name="M:Microsoft.Bot.Builder.FormFlow.Advanced.IRecognize`1.Matches(Microsoft.Bot.Connector.IMessageActivity,System.Object)">
             <summary>
             Return the matches found in the input.
             </summary>
-            <param name="input">The input string being matched.</param>
+            <param name="input">The input activity being matched.</param>
             <param name="defaultValue">The default value or null if none.</param>
             <returns>Match records.</returns>
         </member>
@@ -4190,6 +4798,46 @@
         <member name="F:Microsoft.Bot.Builder.FormFlow.TemplateUsage.None">
             <summary>   An enum constant representing the none option. </summary>
         </member>
+        <member name="F:Microsoft.Bot.Builder.FormFlow.TemplateUsage.AttachmentCollection">
+            <summary>
+            How to ask for an attachment collection. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Bot.Builder.FormFlow.TemplateUsage.AttachmentCollectionDescription">
+            <summary>
+            How to display attachment collection status.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Bot.Builder.FormFlow.TemplateUsage.AttachmentCollectionHelp">
+            <summary>
+            What you can enter when entering an attachment collection.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Bot.Builder.FormFlow.TemplateUsage.AttachmentContentTypeValidatorError">
+            <summary>
+            How to display attachment content-type validator errors.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Bot.Builder.FormFlow.TemplateUsage.AttachmentContentTypeValidatorHelp">
+            <summary>
+            How to display attachment content-type validator help.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Bot.Builder.FormFlow.TemplateUsage.AttachmentField">
+            <summary>
+            How to ask for an attachment collection. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Bot.Builder.FormFlow.TemplateUsage.AttachmentFieldDescription">
+            <summary>
+            How to display an attachment status.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Bot.Builder.FormFlow.TemplateUsage.AttachmentFieldHelp">
+            <summary>
+            What you can enter when entering an attachment collection.
+            </summary>
+        </member>
         <member name="F:Microsoft.Bot.Builder.FormFlow.TemplateUsage.Bool">
             <summary>
             How to ask for a boolean.
@@ -4502,6 +5150,33 @@
             </summary>
             <param name="pattern">Regular expression for validation.</param>
         </member>
+        <member name="T:Microsoft.Bot.Builder.FormFlow.IgnoreFieldAttribute">
+            <summary>
+            Define a field or property as excluded.
+            </summary>
+            <remarks>
+            The ignored field is a field that is excluded from the list of fields.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.FormFlow.IgnoreFieldAttribute.#ctor">
+            <summary>
+            Mark a field or property as excluded.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Bot.Builder.FormFlow.OrderAttribute">
+            <summary>
+            Define a order weight of the field or property.
+            </summary>
+            <remarks>
+            By default the order weight is 0.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.FormFlow.OrderAttribute.#ctor(System.Int32)">
+            <summary>
+            Sets the order weight of the field or property
+            </summary>
+            <param name="order">The order weight</param>
+        </member>
         <member name="T:Microsoft.Bot.Builder.FormFlow.ActiveDelegate`1">
             <summary>
             A delegate for testing a form state to see if a particular step is active.
@@ -4772,6 +5447,15 @@
             <param name="token">The cancellation token.</param>
             <returns>The LUIS result.</returns>
         </member>
+        <member name="M:Microsoft.Bot.Builder.Luis.Extensions.QueryAsync(Microsoft.Bot.Builder.Luis.ILuisService,Microsoft.Bot.Builder.Luis.LuisRequest,System.Threading.CancellationToken)">
+            <summary>
+            Query the LUIS service using this request.
+            </summary>
+            <param name="service">LUIS service.</param>
+            <param name="request">Query request.</param>
+            <param name="token">Cancellation token.</param>
+            <returns>LUIS result.</returns>
+        </member>
         <member name="M:Microsoft.Bot.Builder.Luis.Extensions.BuildUri(Microsoft.Bot.Builder.Luis.ILuisService,System.String)">
             <summary>
             Builds luis uri with text query.
@@ -4810,18 +5494,128 @@
             Luis Api Version.
             </summary>
         </member>
+        <member name="P:Microsoft.Bot.Builder.Luis.ILuisModel.Threshold">
+            <summary>
+            Threshold for top scoring intent
+            </summary>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Luis.ILuisModel.ModifyRequest(Microsoft.Bot.Builder.Luis.LuisRequest)">
+            <summary>
+            Modify a Luis request to specify query parameters like spelling or logging.
+            </summary>
+            <param name="request">Request so far.</param>
+            <returns>Modified request.</returns>
+        </member>
         <member name="T:Microsoft.Bot.Builder.Luis.LuisModelAttribute">
             <summary>
             The LUIS model information.
             </summary>
         </member>
-        <member name="M:Microsoft.Bot.Builder.Luis.LuisModelAttribute.#ctor(System.String,System.String,Microsoft.Bot.Builder.Luis.LuisApiVersion)">
+        <member name="P:Microsoft.Bot.Builder.Luis.LuisModelAttribute.ModelID">
+            <summary>
+            The GUID for the LUIS model.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Luis.LuisModelAttribute.SubscriptionKey">
+            <summary>
+            The subscription key for LUIS.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Luis.LuisModelAttribute.Domain">
+            <summary>
+            Domain where LUIS application is located.
+            </summary>
+            <remarks>Null means default which is api.projectoxford.ai for V1 API and westus.api.cognitive.microsoft.com for V2 api.</remarks>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Luis.LuisModelAttribute.UriBase">
+            <summary>
+            Base URI for LUIS calls.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Luis.LuisModelAttribute.ApiVersion">
+            <summary>
+            Version of query API to call.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Luis.LuisModelAttribute.Threshold">
+            <summary>
+            Threshold for top scoring intent
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Luis.LuisModelAttribute.Log">
+            <summary>
+            Indicates if logging of queries to LUIS is allowed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Luis.LuisModelAttribute.SpellCheck">
+            <summary>
+            Turn on spell checking.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Luis.LuisModelAttribute.Staging">
+            <summary>
+            Use the staging endpoint.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Luis.LuisModelAttribute.TimezoneOffset">
+            <summary>
+            The time zone offset.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Luis.LuisModelAttribute.Verbose">
+            <summary>
+            The verbose flag.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Luis.LuisModelAttribute.BingSpellCheckSubscriptionKey">
+            <summary>
+            The Bing Spell Check subscription key.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Luis.LuisModelAttribute.#ctor(System.String,System.String,Microsoft.Bot.Builder.Luis.LuisApiVersion,System.String,System.Double)">
             <summary>
             Construct the LUIS model information.
             </summary>
             <param name="modelID">The LUIS model ID.</param>
             <param name="subscriptionKey">The LUIS subscription key.</param>
             <param name="apiVersion">The LUIS API version.</param>
+            <param name="domain">Domain where LUIS model is located.</param>
+            <param name="threshold">Threshold for the top scoring intent.</param>
+        </member>
+        <member name="T:Microsoft.Bot.Builder.Luis.ILuisOptions">
+            <summary>
+            Interface containing optional parameters for a LUIS request.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Luis.ILuisOptions.Log">
+            <summary>
+            Indicates if logging of queries to LUIS is allowed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Luis.ILuisOptions.SpellCheck">
+            <summary>
+            Turn on spell checking.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Luis.ILuisOptions.Staging">
+            <summary>
+            Use the staging endpoint.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Luis.ILuisOptions.TimezoneOffset">
+            <summary>
+            The time zone offset.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Luis.ILuisOptions.Verbose">
+            <summary>
+            The verbose flag.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Luis.ILuisOptions.BingSpellCheckSubscriptionKey">
+            <summary>
+            The Bing Spell Check subscription key.
+            </summary>
         </member>
         <member name="T:Microsoft.Bot.Builder.Luis.Models.CompositeChild">
             <summary>
@@ -4943,6 +5737,32 @@
             Dialog is finished.
             </summary>
         </member>
+        <member name="T:Microsoft.Bot.Builder.Luis.Models.Sentiment">
+            <summary>
+            LUIS Sentiment. Look at https://www.luis.ai/Help for more
+            information.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Luis.Models.Sentiment.#ctor">
+            <summary>
+            Initializes a new instance of the Sentiment class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Luis.Models.Sentiment.#ctor(System.String,System.Nullable{System.Double})">
+            <summary>
+            Initializes a new instance of the Sentiment class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Luis.Models.Sentiment.Label">
+            <summary>
+            The text sentiment label detected by LUIS service in response to a query.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Luis.Models.Sentiment.Score">
+            <summary>
+            The score for the sentiment label.
+            </summary>
+        </member>
         <member name="T:Microsoft.Bot.Builder.Luis.Models.EntityRecommendation">
             <summary>
             Luis entity recommendation. Look at https://www.luis.ai/Help for more
@@ -4954,7 +5774,7 @@
             Initializes a new instance of the EntityRecommendation class.
             </summary>
         </member>
-        <member name="M:Microsoft.Bot.Builder.Luis.Models.EntityRecommendation.#ctor(System.String,System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Double},System.Collections.Generic.IDictionary{System.String,System.String})">
+        <member name="M:Microsoft.Bot.Builder.Luis.Models.EntityRecommendation.#ctor(System.String,System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Double},System.Collections.Generic.IDictionary{System.String,System.Object})">
             <summary>
             Initializes a new instance of the EntityRecommendation class.
             </summary>
@@ -4991,9 +5811,10 @@
         </member>
         <member name="P:Microsoft.Bot.Builder.Luis.Models.EntityRecommendation.Resolution">
             <summary>
-            A machine readable dictionary with more information about the
-            entity Look at builtin.datetime for an example in the
-            https://www.luis.ai/Help#PreBuiltEntities.
+            A machine interpretable resolution of the entity.  For example the
+            string "one thousand" would have the resolution "1000".  The
+            exact form of the resolution is defined by the entity type and is
+            documented here: https://www.luis.ai/Help#PreBuiltEntities.
             </summary>
         </member>
         <member name="M:Microsoft.Bot.Builder.Luis.Models.EntityRecommendation.Validate">
@@ -5127,6 +5948,14 @@
             will contain the spell checked utterance.
             </summary>
         </member>
+        <member name="P:Microsoft.Bot.Builder.Luis.Models.LuisResult.Sentiment">
+            <summary>
+            Gets or sets the sentiment.
+            </summary>
+            <value>
+            The sentiment.
+            </value>
+        </member>
         <member name="M:Microsoft.Bot.Builder.Luis.Models.LuisResult.Validate">
             <summary>
             Validate the object. Throws ValidationException if validation fails.
@@ -5137,46 +5966,61 @@
             Object that contains all the possible parameters to build Luis request.
             </summary>
         </member>
-        <member name="F:Microsoft.Bot.Builder.Luis.LuisRequest.Query">
+        <member name="P:Microsoft.Bot.Builder.Luis.LuisRequest.Query">
             <summary>
             The text query.
             </summary>
         </member>
-        <member name="F:Microsoft.Bot.Builder.Luis.LuisRequest.TimezoneOffset">
+        <member name="P:Microsoft.Bot.Builder.Luis.LuisRequest.Log">
+            <summary>
+            Indicates if logging of queries to LUIS is allowed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Luis.LuisRequest.SpellCheck">
+            <summary>
+            Turn on spell checking.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Luis.LuisRequest.Staging">
+            <summary>
+            Use the staging endpoint.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Luis.LuisRequest.TimezoneOffset">
             <summary>
             The time zone offset.
             </summary>
         </member>
-        <member name="F:Microsoft.Bot.Builder.Luis.LuisRequest.ContextId">
-            <summary>
-            The context id.
-            </summary>
-        </member>
-        <member name="F:Microsoft.Bot.Builder.Luis.LuisRequest.Verbose">
+        <member name="P:Microsoft.Bot.Builder.Luis.LuisRequest.Verbose">
             <summary>
             The verbose flag.
             </summary>
         </member>
-        <member name="F:Microsoft.Bot.Builder.Luis.LuisRequest.ForceSet">
+        <member name="P:Microsoft.Bot.Builder.Luis.LuisRequest.BingSpellCheckSubscriptionKey">
             <summary>
-            Force setting the parameter.
+            The Bing Spell Check subscription key.
             </summary>
         </member>
-        <member name="F:Microsoft.Bot.Builder.Luis.LuisRequest.AllowSampling">
+        <member name="P:Microsoft.Bot.Builder.Luis.LuisRequest.ExtraParameters">
             <summary>
-            Indicates if sampling is allowed.
+            Any extra query parameters for the URL.
             </summary>
         </member>
-        <member name="M:Microsoft.Bot.Builder.Luis.LuisRequest.#ctor(System.String,System.Nullable{System.Double},System.String,System.Nullable{System.Boolean},System.String,System.String)">
+        <member name="P:Microsoft.Bot.Builder.Luis.LuisRequest.ContextId">
+            <summary>
+            The context id.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Luis.LuisRequest.ForceSet">
+            <summary>
+            Force setting the parameter when using action binding.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Luis.LuisRequest.#ctor(System.String)">
             <summary>
             Constructs an instance of the LuisReqeuest.
             </summary>
             <param name="query"> The text query.</param>
-            <param name="timezoneOffset"> The time zone offset.</param>
-            <param name="contextId"> The context id for Luis dialog.</param>
-            <param name="verbose"> Indicates if the <see cref="T:Microsoft.Bot.Builder.Luis.Models.LuisResult"/> should be verbose.</param>
-            <param name="forceSet"> Force setting the parameter.</param>
-            <param name="allowSampling"> Allow sampling.</param>
         </member>
         <member name="M:Microsoft.Bot.Builder.Luis.LuisRequest.BuildUri(Microsoft.Bot.Builder.Luis.ILuisModel)">
             <summary>
@@ -5189,6 +6033,13 @@
             <summary>
             A mockable interface for the LUIS service.
             </summary>
+        </member>
+        <member name="M:Microsoft.Bot.Builder.Luis.ILuisService.ModifyRequest(Microsoft.Bot.Builder.Luis.LuisRequest)">
+            <summary>
+            Modify the incoming LUIS request.
+            </summary>
+            <param name="request">Request so far.</param>
+            <returns>Modified request.</returns>
         </member>
         <member name="M:Microsoft.Bot.Builder.Luis.ILuisService.BuildUri(Microsoft.Bot.Builder.Luis.LuisRequest)">
             <summary>
@@ -5258,6 +6109,21 @@
             <summary>
               Overrides the current thread's CurrentUICulture property for all
               resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Resource.Resources.AttachmentContentTypeValidatorError">
+            <summary>
+              Looks up a localized string similar to Attachment &apos;{0}&apos; is invalid! The content-type should contain {1}..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Resource.Resources.AttachmentContentTypeValidatorHelp">
+            <summary>
+              Looks up a localized string similar to You should provide an attachment where content-type has {0}..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Resource.Resources.BooleanChoices">
+            <summary>
+              Looks up a localized string similar to true=y,yes,yep,sure,ok,\u1f44d,\u1f44c|false=n,no,nope,\u1f44e,\\u270b,\\u1f590.
             </summary>
         </member>
         <member name="P:Microsoft.Bot.Builder.Resource.Resources.CommandBack">
@@ -5360,6 +6226,11 @@
               Looks up a localized string similar to , .
             </summary>
         </member>
+        <member name="P:Microsoft.Bot.Builder.Resource.Resources.DefaultContentTypesSeparator">
+            <summary>
+              Looks up a localized string similar to or.
+            </summary>
+        </member>
         <member name="P:Microsoft.Bot.Builder.Resource.Resources.DefaultLastSeparator">
             <summary>
               Looks up a localized string similar to , and .
@@ -5405,9 +6276,59 @@
               Looks up a localized string similar to Field Name.
             </summary>
         </member>
+        <member name="P:Microsoft.Bot.Builder.Resource.Resources.NumberExpression">
+            <summary>
+              Looks up a localized string similar to [+-]?(?:\d+\.?\d*|\d*\.?\d+).
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Resource.Resources.NumberOrdinals">
+            <summary>
+              Looks up a localized string similar to 1=1st,first,first one|2=2nd,second,second one|3=3rd,third,third one|4=4th,fourth,fourth one|5=5th,fifth,fifth one|6=6th,sixth,sixth one|7=7th,seventh,seventh one|8=8th,eigth,eigth one|9=9th,ninth,ninth one|10=10th,tenth,tenth one.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Resource.Resources.NumberReverseOrdinals">
+            <summary>
+              Looks up a localized string similar to -1=last,last one|-2=next to last,second to last,second from last|-3=third to last,third from last|-4=fourth to last,fourth from last|-5=fifth to last,fith from last.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Resource.Resources.NumberTerms">
+            <summary>
+              Looks up a localized string similar to 0=zero|1=one|2=two|3=three|4=four|5=five|6=six|7=seven|8=eight|9=nine|10=ten|11=eleven|12=twelve|13=thirteen|14=fourteen|15=fifteen|16=sixteen|17=seventeen|18=eighteen|19=nineteen|20=twenty.
+            </summary>
+        </member>
         <member name="P:Microsoft.Bot.Builder.Resource.Resources.PromptRetry">
             <summary>
               Looks up a localized string similar to I didn&apos;t understand. Say something in reply..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Resource.Resources.TemplateAttachment">
+            <summary>
+              Looks up a localized string similar to Please submit an attachment for {&amp;}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Resource.Resources.TemplateAttachmentCollection">
+            <summary>
+              Looks up a localized string similar to Please submit a collection of attachments for {&amp;}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Resource.Resources.TemplateAttachmentCollectionDescription">
+            <summary>
+              Looks up a localized string similar to {0} attachment/s linked..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Resource.Resources.TemplateAttachmentCollectionHelp">
+            <summary>
+              Looks up a localized string similar to You can submit one or more attachments.{0}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Resource.Resources.TemplateAttachmentDescription">
+            <summary>
+              Looks up a localized string similar to Attachment named &apos;{0}&apos; with content-type &apos;{1}&apos;..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Builder.Resource.Resources.TemplateAttachmentHelp">
+            <summary>
+              Looks up a localized string similar to You can submit one attachment.{0}.
             </summary>
         </member>
         <member name="P:Microsoft.Bot.Builder.Resource.Resources.TemplateBool">

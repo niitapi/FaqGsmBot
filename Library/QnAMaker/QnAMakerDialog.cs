@@ -135,9 +135,10 @@ namespace Microsoft.Bot.Builder.CognitiveServices.QnAMaker
 
                     if (string.Compare(message.Text, "Thanks", true) == 0 || string.Compare(message.Text, "Done", true) == 0  || string.Compare(message.Text, "Bye", true) == 0 || string.Compare(message.Text, "Close", true) == 0 || string.Compare(message.Text, "Fine", true) == 0)
                     {
-                        //await context.PostAsync($"Hello, I am rohit, your Student Services Executive. Please type your query and i would be happy to help. Type Thanks when you want to exit.");
+                            await this.QnARatingStepAsync(context, qnaMakerResults);
 
-                        await this.QnARatingStepAsync(context, qnaMakerResults);
+                      
+
                     }
                     else
                     {
